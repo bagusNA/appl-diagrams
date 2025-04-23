@@ -1,4 +1,4 @@
-@startuml Menghapus data bencana alam
+@startuml UC-MGDISASTER-010 - Menghapus data bencana alam
 title Menghapus data bencana alam
 
 |Administrator & Perwakilan BPBD|

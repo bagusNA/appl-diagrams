@@ -1,4 +1,4 @@
-@startuml Menonaktifkan akun khusus
+@startuml UC-MGUSER-013 - Menonaktifkan akun khusus
 title Menonaktifkan akun khusus
 
 |Administrator|

@@ -1,4 +1,4 @@
-@startuml Melihat daftar pengguna nonaktif
+@startuml UC-MGUSER-003 - Melihat daftar pengguna nonaktif
 title Melihat daftar pengguna nonaktif
 
 |Administrator|

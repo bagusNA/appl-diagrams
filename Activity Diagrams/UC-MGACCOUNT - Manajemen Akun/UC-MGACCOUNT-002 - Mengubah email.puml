@@ -1,4 +1,4 @@
-@startuml Mengubah email
+@startuml UC-MGACCOUNT-002 - Mengubah email
 title Mengubah email
 
 |Pengguna|

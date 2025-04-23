@@ -1,4 +1,4 @@
-@startuml Mengubah data akun
+@startuml UC-MGACCOUNT-001 - Mengubah data akun
 title Mengubah data akun
 
 |Pengguna|

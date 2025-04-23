@@ -1,4 +1,4 @@
-@startuml Melihat daftar laporan bencana alam yang telah diajukan
+@startuml UC-MAP-020 - Melihat daftar laporan bencana alam yang telah diajukan
 
 title Membuat Laporan Bencana Alam
 

@@ -1,4 +1,4 @@
-@startuml Melihat log aktivitas data bencana alam;
+@startuml UC-MGDISASTER-013 - Melihat log aktivitas data bencana alam;
 title Melihat log aktivitas data bencana alam;
 
 |Administrator & Perwakilan BPBD|

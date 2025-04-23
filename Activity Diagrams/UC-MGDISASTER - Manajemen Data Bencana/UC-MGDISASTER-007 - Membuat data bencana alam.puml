@@ -1,4 +1,4 @@
-@startuml Membuat data bencana alam
+@startuml UC-MGDISASTER-007 - Membuat data bencana alam
 title Membuat data bencana alam
 
 |Administrator & Perwakilan BPBD|

@@ -1,4 +1,4 @@
-@startuml Mengubah password 
+@startuml UC-MGACCOUNT-004 - Mengubah password 
 title Mengubah password
 
 |Pengguna|

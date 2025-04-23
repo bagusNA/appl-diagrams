@@ -1,4 +1,4 @@
-@startuml Menutup laporan bencana alam yang tidak valid
+@startuml UC-MGDISASTER-004 - Menutup laporan bencana alam yang tidak valid
 title Menutup laporan bencana alam yang tidak valid
 
 |Administrator & Perwakilan BPBD|

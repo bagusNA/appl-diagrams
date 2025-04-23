@@ -1,4 +1,4 @@
-@startuml Membuat daftar akun khusus
+@startuml UC-MGUSER-010 - Membuat daftar akun khusus
 title Membuat daftar akun khusus
 
 |Administrator|

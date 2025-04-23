@@ -1,4 +1,4 @@
-@startuml Melihat daftar pengguna
+@startuml UC-MGUSER-001 - Melihat daftar pengguna
 title Melihat daftar pengguna
 
 |Administrator|

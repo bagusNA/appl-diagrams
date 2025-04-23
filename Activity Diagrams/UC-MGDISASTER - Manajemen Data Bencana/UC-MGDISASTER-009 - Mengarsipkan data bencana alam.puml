@@ -1,4 +1,4 @@
-@startuml Mengarsipkan data bencana alam
+@startuml UC-MGDISASTER-009 - Mengarsipkan data bencana alam
 title Mengarsipkan data bencana alam
 
 |Administrator & Perwakilan BPBD|

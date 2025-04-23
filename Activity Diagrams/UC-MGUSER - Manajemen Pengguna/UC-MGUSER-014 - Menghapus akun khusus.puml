@@ -1,4 +1,4 @@
-@startuml Menghapus akun khusus
+@startuml UC-MGUSER-014 - Menghapus akun khusus
 title Menghapus akun khusus
 
 |Administrator|

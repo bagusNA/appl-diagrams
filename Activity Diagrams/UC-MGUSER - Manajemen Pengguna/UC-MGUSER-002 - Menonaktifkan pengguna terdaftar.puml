@@ -1,4 +1,4 @@
-@startuml Menonaktifkan pengguna terdaftar
+@startuml UC-MGUSER-002 - Menonaktifkan pengguna terdaftar
 title Menonaktifkan pengguna terdaftar
 
 |Administrator|

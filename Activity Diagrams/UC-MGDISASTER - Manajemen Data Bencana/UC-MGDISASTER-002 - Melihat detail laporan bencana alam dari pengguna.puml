@@ -1,4 +1,4 @@
-@startuml Melihat detail laporan bencana alam dari pengguna
+@startuml UC-MGDISASTER-002 - Melihat detail laporan bencana alam dari pengguna
 title Melihat detail laporan bencana alam dari pengguna
 
 |Administrator & Perwakilan BPBD|

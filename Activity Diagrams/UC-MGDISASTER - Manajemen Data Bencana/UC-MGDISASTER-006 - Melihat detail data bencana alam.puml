@@ -1,4 +1,4 @@
-@startuml Melihat detail data bencana alam
+@startuml UC-MGDISASTER-006 - Melihat detail data bencana alam
 title Melihat detail data bencana alam
 
 |Administrator & Perwakilan BPBD|

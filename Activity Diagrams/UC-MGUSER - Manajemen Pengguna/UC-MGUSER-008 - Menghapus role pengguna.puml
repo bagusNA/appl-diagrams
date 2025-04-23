@@ -1,4 +1,4 @@
-@startuml Menghapus role pengguna
+@startuml UC-MGUSER-008 - Menghapus role pengguna
 title Menghapus role pengguna
 
 |Administrator|

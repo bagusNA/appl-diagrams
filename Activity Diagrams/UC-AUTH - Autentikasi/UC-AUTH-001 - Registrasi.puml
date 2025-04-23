@@ -1,4 +1,4 @@
-@startuml Registrasi
+@startuml UC-AUTH-001 - Registrasi
 !pragma useVerticalIf on
 
 title Registrasi

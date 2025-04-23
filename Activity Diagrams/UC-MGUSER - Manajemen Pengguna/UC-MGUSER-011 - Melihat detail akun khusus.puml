@@ -1,4 +1,4 @@
-@startuml Melihat detail akun khusus
+@startuml UC-MGUSER-011 - Melihat detail akun khusus
 title Melihat detail akun khusus (Administrator / Perwakilan BPBD)
 
 |Administrator|

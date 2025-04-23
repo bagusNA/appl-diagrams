@@ -1,4 +1,4 @@
-@startuml Mengubah data bencana alam
+@startuml UC-MGDISASTER-008 - Mengubah data bencana alam
 title Mengubah data bencana alam
 
 |Administrator & Perwakilan BPBD|

@@ -1,4 +1,4 @@
-@startuml Menambahkan data bencana alam secara bulk
+@startuml UC-MGDISASTER-011 - Menambahkan data bencana alam secara bulk
 title Menambahkan data bencana alam secara bulk
 
 |Administrator & Perwakilan BPBD|

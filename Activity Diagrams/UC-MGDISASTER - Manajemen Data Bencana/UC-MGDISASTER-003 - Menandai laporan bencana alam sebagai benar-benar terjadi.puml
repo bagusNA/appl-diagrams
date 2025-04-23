@@ -1,4 +1,4 @@
-@startuml Menandai laporan bencana alam sebagai benar-benar terjadi (verifikasi laporan)
+@startuml UC-MGDISASTER-003 - Menandai laporan bencana alam sebagai benar-benar terjadi (verifikasi laporan)
 title Menandai laporan bencana alam sebagai benar-benar terjadi (verifikasi laporan)
 
 |Administrator & Perwakilan BPBD|

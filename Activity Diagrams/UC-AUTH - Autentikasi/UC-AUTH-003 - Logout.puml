@@ -1,4 +1,4 @@
-@startuml Logout
+@startuml UC-AUTH-003 - Logout
 !pragma useVerticalIf on
 
 title Logout
