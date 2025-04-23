@@ -1,0 +1,41 @@
+@startuml Melaporkan komentar lain
+
+title Melaporkan komentar lain
+ 
+|Pengguna|
+start
+:Memilih menu komentar;
+
+|Sistem|
+:Menampilkan komentar;
+
+|Pengguna|
+:Memilih menu laporkan pada komentar yang telah dibuat;
+
+|Sistem|
+:Menampilkan form laporan komentar;
+
+|Pengguna|
+:Mengisi alasan laporan;
+:Mengklik tombol kirim;
+
+|Sistem|
+:Menampilkan konfirmasi;
+
+|Pengguna|
+:Mengonfirmasi laporan;
+
+if (Konfirmasi laporan) then (Batal)
+else (Ok)
+  |DBMS|
+  :Menyimpan laporan;
+
+  |Sistem|
+  :Menampilkan pesan berhasil menyimpan laporan;
+  :Menampilkan daftar komentar;
+endif
+
+|Pengguna|
+stop
+
+@enduml

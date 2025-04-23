@@ -1,0 +1,42 @@
+@startuml Menutup laporan bencana alam yang tidak valid
+title Menutup laporan bencana alam yang tidak valid
+
+|Administrator & Perwakilan BPBD|
+start
+:Memilih menu daftar laporan bencana alam dari pengguna;
+:Memilih filter dan sort;
+
+|Sistem|
+:Menampilkan menu daftar laporan bencana alam dari pengguna;
+
+|Administrator & Perwakilan BPBD|
+:Mengklik tombol detail pada laporan yang dipilih;
+
+|Sistem|
+:Menampilkan menu detail laporan bencana alam;
+
+|Administrator & Perwakilan BPBD|
+:Memilih opsi 'Laporan tidak valid';
+:Mengisi alasan;
+:Memilih tombol simpan;
+
+|Sistem|
+:Menampilkan popup konfirmasi;
+
+|Administrator & Perwakilan BPBD|
+:Mengonfirmasi penutupan laporan;
+
+if (Konfirmasi popup) then (Batal)
+else (Ok)
+  |DBMS|
+  :Menyimpan penutupan laporan;
+ 
+  |Sistem|
+  :Menampilkan pesan berhasil;
+  :Menampilkan menu daftar laporan bencana alam dari pengguna;
+endif
+
+|Administrator & Perwakilan BPBD|
+stop
+
+@enduml

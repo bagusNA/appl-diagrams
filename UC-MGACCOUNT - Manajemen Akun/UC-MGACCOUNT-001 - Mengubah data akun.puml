@@ -1,0 +1,45 @@
+@startuml Mengubah data akun
+title Mengubah data akun
+
+|Pengguna|
+:Memilih menu edit akun;
+
+|Sistem|
+:Menampilkan menu edit;
+
+|Pengguna|
+:Mengisi isian data akun;
+:Mengunggah foto profil baru;
+
+|Sistem|
+:Menampilkan preview foto profil baru;
+
+|Pengguna|
+:Mengklik tombol simpan;
+
+|Sistem|
+:Menampilkan popup konfirmasi;
+
+|Pengguna|
+:Mengonfirmasi perubahan data;
+
+if (Konfirmasi popup) then (Batal)
+else (Ok)
+  |DBMS|
+  :Menyimpan perubahan data akun;
+
+  if (Mengunggah foto profil?) then (Tidak)
+  else (Ya)
+    |Storage Bucket|
+    :Menyimpan foto profil;
+  endif
+
+  |Sistem|
+  :Menampilkan pesan berhasil;
+  :Menampilkan menu edit akun;
+endif
+
+|Pengguna|
+stop
+
+@enduml

@@ -1,0 +1,36 @@
+@startuml Menonaktifkan pengguna terdaftar
+title Menonaktifkan pengguna terdaftar
+
+|Administrator|
+start
+:Memilih menu daftar pengguna;
+:Memilih filter dan sort;
+
+|Sistem|
+:Menampilkan menu daftar pengguna;
+
+|Administrator|
+:Mengklik tombol nonaktifkan pada pengguna yang dipilih;
+:Mengisi alasan penonaktifan;
+:Mengklik tombol nonaktifkan;
+
+|Sistem|
+:Menampilkan konfirmasi;
+
+|Administrator|
+:Mengonfirmasi penonaktifan pengguna;
+
+if (Konfirmasi popup) then (Batal)
+else (Ok)
+  |DBMS|
+  :Menyimpan penonaktifan pengguna;
+
+  |Sistem|
+  :Menampilkan pesan berhasil;
+  :Menampilkan menu daftar pengguna;
+endif
+
+|Administrator|
+stop
+
+@enduml

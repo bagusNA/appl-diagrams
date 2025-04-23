@@ -1,0 +1,21 @@
+@startuml Melihat detail akun khusus
+title Melihat detail akun khusus (Administrator / Perwakilan BPBD)
+
+|Administrator|
+start
+:Memilih menu daftar akun khusus;
+:Memilih filter dan sort;
+
+|Sistem|
+:Menampilkan menu daftar akun khusus;
+
+|Administrator|
+:Mengklik tombol detail pada akun yang dipilih;
+
+|Sistem|
+:Menampilkan menu detail akun khusus;
+:Menampilkan log aktivitas akun khusus;
+
+stop
+
+@enduml

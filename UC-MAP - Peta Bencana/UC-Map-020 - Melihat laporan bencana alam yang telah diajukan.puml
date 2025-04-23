@@ -1,0 +1,13 @@
+@startuml Melihat daftar laporan bencana alam yang telah diajukan
+
+title Membuat Laporan Bencana Alam
+
+|Pengguna|
+start
+:Memilih menu laporan bencana alam;
+
+|Sistem|
+:Menampilkan form laporan bencana alam;
+stop
+
+@enduml

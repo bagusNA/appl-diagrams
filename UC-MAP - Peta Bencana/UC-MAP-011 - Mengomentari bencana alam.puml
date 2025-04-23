@@ -1,0 +1,32 @@
+@startuml Mengomentari pada bencana alam atau laporan bencana alam
+
+title Mengomentari pada bencana alam atau laporan bencana alam
+ 
+|Pengguna|
+start
+:Memilih menu komentar;
+
+|Sistem|
+:Menampilkan komentar;
+
+|Pengguna|
+:Menginputkan konten komentar;
+:Memilih media (gambar atau video) untuk dilampirkan;
+:Mengklik tombol unggah / komentar;
+
+|DBMS|
+:Menyimpan komentar;
+
+if (Ada media unggahan?) then (Tidak ada)
+else (Ada)
+|Storage Bucket|
+:Menyimpan media unggahan;
+endif
+
+|Sistem|
+:Menampilkan pesan berhasil;
+:Menampilkan komentar yang telah dibuat;
+
+stop
+
+@enduml

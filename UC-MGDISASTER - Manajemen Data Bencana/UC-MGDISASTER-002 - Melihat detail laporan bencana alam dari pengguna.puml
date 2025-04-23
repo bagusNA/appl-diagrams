@@ -1,0 +1,20 @@
+@startuml Melihat detail laporan bencana alam dari pengguna
+title Melihat detail laporan bencana alam dari pengguna
+
+|Administrator & Perwakilan BPBD|
+start
+:Memilih menu daftar laporan bencana alam dari pengguna;
+:Memilih filter dan sort;
+
+|Sistem|
+:Menampilkan menu daftar laporan bencana alam dari pengguna;
+
+|Administrator & Perwakilan BPBD|
+:Mengklik tombol detail pada laporan yang dipilih;
+
+|Sistem|
+:Menampilkan menu detail laporan bencana alam;
+
+stop
+
+@enduml

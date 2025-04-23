@@ -1,0 +1,14 @@
+@startuml Melihat log aktivitas data bencana alam;
+title Melihat log aktivitas data bencana alam;
+
+|Administrator & Perwakilan BPBD|
+start
+:Memilih menu log aktivitas data bencana alam;
+:Memilih filter dan sort;
+
+|Sistem|
+:Menampilkan menu log aktivitas data bencana alam;
+
+stop
+
+@enduml

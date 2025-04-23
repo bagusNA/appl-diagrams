@@ -1,0 +1,48 @@
+@startuml Menghapus role pengguna
+title Menghapus role pengguna
+
+|Administrator|
+start
+:Memilih menu daftar role pengguna;
+:Memilih filter dan sort;
+
+|Sistem|
+:Menampilkan menu daftar role pengguna;
+
+|Administrator|
+:Memilih tombol detail pada role pengguna;
+
+|Sistem|
+:Menampilkan menu detail role pengguna;
+:Menampilkan daftar pengguna yang memiliki role tersebut;
+
+|Administrator|
+:Mengklik tombol hapus;
+
+|Sistem|
+:Menampilkan popup isian alasan;
+
+|Administrator|
+:Mengisi alasan penghapusan;
+
+|Sistem|
+:Menampilkan konfirmasi;
+
+|Administrator|
+:Mengonfirmasi perubahan role;
+
+if (Konfirmasi popup) then (Batal)
+else (Ok)
+  |DBMS|
+  :Menghapus role dari anggota yang sebelumnya termasuk;
+  :Menghapus role;
+
+  |Sistem|
+  :Menampilkan pesan berhasil;
+  :Menampilkan menu daftar role pengguna;
+endif
+
+|Administrator|
+stop
+
+@enduml

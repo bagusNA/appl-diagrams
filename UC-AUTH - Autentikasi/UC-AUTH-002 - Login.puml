@@ -1,0 +1,28 @@
+@startuml Login
+!pragma useVerticalIf on
+
+title Login
+
+|Pengguna|
+start
+:Memilih menu login;
+
+|Sistem|
+:Menampilkan menu login;
+
+|Pengguna|
+:Mengisi data akun;
+:Mengklik tombol login;
+
+|Sistem|
+:Mengecek hasil hash kredensial;
+if (Kredensial benar?) then (Ya)
+  :Menyimpan Pengguna session;
+  :Menampilkan pesan berhasil;
+  :Menampilkan halaman peta bencana;
+else (Tidak)
+  :Tampilkan pesan login gagal;
+endif 
+
+stop
+@enduml

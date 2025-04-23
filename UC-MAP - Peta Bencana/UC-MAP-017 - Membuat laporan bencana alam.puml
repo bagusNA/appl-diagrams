@@ -1,0 +1,42 @@
+@startuml Membuat laporan bencana alam
+
+title Membuat laporan bencana alam
+ 
+|Pengguna|
+start
+:Memilih menu laporan bencana alam;
+
+|Sistem|
+:Menampilkan menu laporan bencana alam;
+
+|Pengguna|
+:Mengisi jenis, lokasi, dan deskripsi bencana alam;
+:Mengunggah media (foto atau video) terkait bencana alam;
+:Mengklik tombol laporkan;
+
+|Sistem|
+:Menampilkan popup konfirmasi;
+
+|Pengguna|
+:Mengonfirmasi popup;
+
+if (Konfirmasi popup) then (Batal)
+else (Ok)
+  |DBMS|
+  :Menyimpan laporan;
+
+  if (Ada media unggahan?) then (Tidak ada)
+  else (Ada)
+    |Storage Bucket|
+    :Menyimpan media unggahan;
+  endif
+
+  |Sistem|
+  :Menampilkan pesan berhasil;
+  :Menampilkan detail laporan yang telah dibuat;
+endif
+
+|Pengguna|
+stop
+
+@enduml

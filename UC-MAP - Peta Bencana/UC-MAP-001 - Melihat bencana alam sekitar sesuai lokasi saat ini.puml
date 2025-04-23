@@ -1,0 +1,26 @@
+@startuml Melihat bencana alam sekitar sesuai lokasi saat ini
+
+title Melihat bencana alam sekitar sesuai lokasi saat ini
+
+|Pengguna|
+start
+:Mengklik tombol cari lokasi / precise location;
+
+|Browser Geolocation API|
+:Mencari lokasi pengguna dengan geolocation;
+
+|Sistem|
+switch (Lokasi ditemukan?)
+case (Lokasi ditemukan)
+  :Menampilkan data bencana alam sesuai lokasi pengguna;
+  :Zoom in ke daerah lokasi pengguna;
+  :Menampilkan rekapitulasi data bencana alam;
+case (Lokasi tidak ditemukan)
+  :Tampilkan pesan lokasi tidak ditemukan;
+case (Lokasi di luar Indonesia)
+  :Tampilkan pesan lokasi berada di luar Indonesia;
+endswitch
+
+stop
+
+@enduml

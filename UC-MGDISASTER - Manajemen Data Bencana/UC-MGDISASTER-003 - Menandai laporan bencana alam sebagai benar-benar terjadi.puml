@@ -1,0 +1,47 @@
+@startuml Menandai laporan bencana alam sebagai benar-benar terjadi (verifikasi laporan)
+title Menandai laporan bencana alam sebagai benar-benar terjadi (verifikasi laporan)
+
+|Administrator & Perwakilan BPBD|
+start
+:Memilih menu daftar laporan bencana alam dari pengguna;
+:Memilih filter dan sort;
+
+|Sistem|
+:Menampilkan menu daftar laporan bencana alam dari pengguna;
+
+|Administrator & Perwakilan BPBD|
+:Mengklik tombol detail pada laporan yang dipilih;
+
+|Sistem|
+:Menampilkan menu detail laporan bencana alam;
+
+|Administrator & Perwakilan BPBD|
+:Memilih opsi 'Laporan benar';
+:Mengisi data pelengkap (komentar, tindak lanjut, dan media tambahan);
+
+|Sistem|
+:Menampilkan popup konfirmasi;
+
+|Administrator & Perwakilan BPBD|
+:Mengonfirmasi verifikasi laporan;
+
+if (Konfirmasi popup) then (Batal)
+else (Ok)
+  |DBMS|
+  :Menyimpan verifikasi laporan;
+
+  if (Ada media unggahan?) then (Tidak ada)
+  else (Ada)
+    |Storage Bucket|
+    :Menyimpan media unggahan;
+  endif
+ 
+  |Sistem|
+  :Menampilkan pesan berhasil;
+  :Menampilkan menu daftar laporan bencana alam dari pengguna;
+endif
+
+|Administrator & Perwakilan BPBD|
+stop
+
+@enduml

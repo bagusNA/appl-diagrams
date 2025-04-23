@@ -1,0 +1,21 @@
+@startuml Melihat rekapitulasi bencana alam
+
+title Melihat rekapitulasi bencana alam
+
+|Pengguna|
+start
+:Memilih daerah dengan menahan / double click;
+
+|Sistem|
+:Menampilkan outline wilayah daerah;
+:Menampilkan deskripsi singkat daerah;
+
+|Pengguna|
+:Memilih tombol rekapitulasi;
+
+|Sistem|
+:Menampilkan rekapitulasi bencana alam;
+
+stop
+
+@enduml

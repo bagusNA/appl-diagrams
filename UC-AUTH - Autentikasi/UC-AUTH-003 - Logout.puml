@@ -1,0 +1,24 @@
+@startuml Logout
+!pragma useVerticalIf on
+
+title Logout
+
+|Pengguna|
+start
+:Mengklik tombol logout;
+
+|Sistem|
+:Menampilkan popup konfirmasi;
+
+|Pengguna|
+if (Konfirmasi popup) then (Ok)
+  |Sistem|
+  :Menghapus Pengguna session;
+  :Menampilkan pesan berhasil;
+  :Menampilkan halaman peta bencana;
+else (Batal)
+endif 
+
+|Pengguna|
+stop
+@enduml

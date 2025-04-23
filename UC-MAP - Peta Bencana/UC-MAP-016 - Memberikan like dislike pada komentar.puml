@@ -1,0 +1,23 @@
+@startuml Memberikan like dislike pada komentar
+
+title Memberikan like dislike pada komentar
+ 
+|Pengguna|
+start
+:Memilih menu komentar;
+
+|Sistem|
+:Menampilkan komentar;
+
+|Pengguna|
+:Memilih tombol like/dislike pada komentar yang telah dibuat;
+
+|DBMS|
+:Menyimpan like/dislike;
+
+|Sistem|
+:Menampilkan warna berbeda untuk tombol like/dislike;
+
+stop
+
+@enduml

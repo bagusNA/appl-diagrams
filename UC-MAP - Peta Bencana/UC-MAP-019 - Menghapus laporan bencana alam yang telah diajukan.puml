@@ -1,0 +1,39 @@
+@startuml Menghapus laporan bencana alam yang telah diajukan
+
+title Menghapus laporan bencana alam yang telah diajukan
+
+|Pengguna|
+start
+:Memilih menu laporan bencana alam;
+
+|Sistem|
+:Menampilkan menu laporan bencana alam;
+
+|Pengguna|
+:Memilih tombol hapus pada laporan yang telah dipilih;
+
+|Sistem|
+:Menampilkan popup konfirmasi;
+
+|Pengguna|
+:Mengonfirmasi penghapusan;
+
+if (Konfirmasi popup) then (Batal)
+else (Ok)
+  |DBMS|
+  :Menghapus laporan;
+
+  if (Ada media unggahan?) then (Tidak ada)
+  else (Ada)
+    |Storage Bucket|
+    :Menghapus media unggahan;
+  endif
+
+  |Sistem|
+  :Menampilkan pesan berhasil;
+endif
+
+|Pengguna|
+stop
+
+@enduml

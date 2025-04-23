@@ -1,0 +1,36 @@
+@startuml Melaporkan laporan bencana alam yang diunggah pengguna lain
+
+title Melaporkan laporan bencana alam yang diunggah pengguna lain
+
+|Pengguna|
+start
+:Memilih laporan bencana alam pada peta;
+
+|Sistem|
+:Menampilkan menu detail laporan bencana alam;
+
+|Pengguna|
+:Memilih menu laporan pada laporan yang dipilih;
+:Mengisi alasan laporan;
+:Mengklik tombol laporkan;
+
+|Sistem|
+:Menampilkan popup konfirmasi;
+
+|Pengguna|
+:Mengonfirmasi laporan;
+
+if (Konfirmasi popup) then (Batal)
+else (Ok)
+  |DBMS|
+  :Menyimpan laporan;
+  
+  |Sistem|
+  :Menampilkan pesan berhasil;
+  :Menampilkan detail laporan bencana alam yang telah dilaporkan;
+endif
+
+|Pengguna|
+stop
+
+@enduml

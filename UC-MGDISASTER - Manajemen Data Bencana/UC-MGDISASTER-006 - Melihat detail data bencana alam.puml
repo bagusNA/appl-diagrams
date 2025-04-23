@@ -1,0 +1,20 @@
+@startuml Melihat detail data bencana alam
+title Melihat detail data bencana alam
+
+|Administrator & Perwakilan BPBD|
+start
+:Memilih menu daftar data bencana alam;
+:Memilih filter dan sort;
+
+|Sistem|
+:Menampilkan menu daftar data bencana alam;
+
+|Administrator & Perwakilan BPBD|
+:Mengklik tombol detail pada data bencana alam yang dipilih;
+
+|Sistem|
+:Menampilkan menu detail data bencana alam;
+
+stop
+
+@enduml

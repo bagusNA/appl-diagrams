@@ -1,0 +1,14 @@
+@startuml Melihat daftar role pengguna
+title Melihat daftar role pengguna
+
+|Administrator|
+start
+:Memilih menu daftar role pengguna;
+:Memilih filter dan sort;
+
+|Sistem|
+:Menampilkan menu daftar role pengguna;
+
+stop
+
+@enduml

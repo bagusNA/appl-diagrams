@@ -1,0 +1,40 @@
+@startuml Mengarsipkan data bencana alam
+title Mengarsipkan data bencana alam
+
+|Administrator & Perwakilan BPBD|
+start
+:Memilih menu daftar data bencana alam;
+:Memilih filter dan sort;
+
+|Sistem|
+:Menampilkan menu daftar data bencana alam;
+
+|Administrator & Perwakilan BPBD|
+:Memilih menu detail data bencana alam;
+
+|Sistem|
+:Menampilkan menu detail data bencana alam;
+
+|Administrator & Perwakilan BPBD|
+:Mengklik tombol arsip;
+
+|Sistem|
+:Menampilkan popup konfirmasi;
+
+|Administrator & Perwakilan BPBD|
+:Mengonfirmasi pengarsipan data bencana alam;
+
+if (Konfirmasi popup) then (Batal)
+else (Ok)
+  |DBMS|
+  :Menyimpan pengarsipan data bencana alam;
+
+  |Sistem|
+  :Menampilkan pesan berhasil;
+  :Menampilkan menu detail data bencana alam yang telah diarsipkan;
+endif
+
+|Administrator & Perwakilan BPBD|
+stop
+
+@enduml

@@ -1,0 +1,26 @@
+@startuml Melihat komentar pada laporan bencana alam
+
+title Melihat komentar pada laporan bencana alam
+ 
+|Pengguna|
+start
+:Memilih laporan bencana alam pada peta;
+
+|Sistem|
+:Zoom in ke daerah sekitar laporan bencana alam;
+:Menampilkan detail laporan bencana alam;
+
+|Pengguna|
+:Memilih menu komentar;
+
+|Sistem|
+:Menampilkan komentar dari laporan bencana alam;
+
+if (Ada komentar?) then (Tidak)
+  :Menampilkan pesan tidak ada komentar;
+else (Ya)
+endif
+
+stop
+
+@enduml

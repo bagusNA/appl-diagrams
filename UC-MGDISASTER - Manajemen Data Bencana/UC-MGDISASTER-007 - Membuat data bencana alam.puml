@@ -1,0 +1,48 @@
+@startuml Membuat data bencana alam
+title Membuat data bencana alam
+
+|Administrator & Perwakilan BPBD|
+start
+:Memilih menu daftar data bencana alam;
+:Memilih filter dan sort;
+
+|Sistem|
+:Menampilkan menu daftar data bencana alam;
+
+|Administrator & Perwakilan BPBD|
+:Memilih menu tambah data bencana alam;
+
+|Sistem|
+:Menampilkan menu tambah data bencana alam;
+
+|Administrator & Perwakilan BPBD|
+:Mengisi data bencana alam;
+:Mengunggah media (foto atau video) jika ada;
+:Mengklik tombol simpan;
+
+|Sistem|
+:Menampilkan popup konfirmasi;
+
+|Administrator & Perwakilan BPBD|
+:Mengonfirmasi pembuatan data bencana alam;
+
+if (Konfirmasi popup) then (Batal)
+else (Ok)
+  |DBMS|
+  :Menyimpan data bencana alam;
+
+  if (Ada media unggahan?) then (Tidak ada)
+  else (Ada)
+    |Storage Bucket|
+    :Menyimpan media unggahan;
+  endif
+
+  |Sistem|
+  :Menampilkan pesan berhasil;
+  :Menampilkan menu detail data bencana alam yang telah dibuat;
+endif
+
+|Administrator & Perwakilan BPBD|
+stop
+
+@enduml

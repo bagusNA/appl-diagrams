@@ -1,0 +1,26 @@
+@startuml Memfilter bencana alam dan laporan bencana alam yang ditampilkan
+
+title Memfilter bencana alam dan laporan bencana alam yang ditampilkan
+
+|Pengguna|
+start
+:Memilih tombol filter;
+
+|Sistem|
+:Menampilkan menu overlay filter;
+
+|Pengguna|
+:Memilih filter yang digunakan;
+:Mengklik tombol filter;
+
+|Sistem|
+:Menampilkan bencana alam sesuai filter yang digunakan;
+
+if (Ada bencana alam yang memenuhi?) then (Tidak ada)
+  :Tampilkan pesan tidak ada bencana alam yang memenuhi kriteria;
+else (Ada)
+endif
+
+stop
+
+@enduml

@@ -1,0 +1,40 @@
+@startuml Menghapus komentar yang dibuat 
+
+title Menghapus komentar yang dibuat
+ 
+|Pengguna|
+start
+:Memilih menu komentar;
+
+|Sistem|
+:Menampilkan komentar;
+
+|Pengguna|
+:Memilih menu hapus pada komentar yang telah dibuat;
+
+|Sistem|
+:Menampilkan konfirmasi;
+
+|Pengguna|
+:Mengonfirmasi penghapusan;
+
+if (Konfirmasi penghapusan) then (Ok)
+  |DBMS|
+  :Menghapus komentar;
+
+  |Storage Bucket|
+  if (Ada media unggahan?) then (Tidak ada)
+  else (Ada)
+  :Menghapus media unggahan;
+  endif
+
+  |Sistem|
+  :Menampilkan pesan berhasil dihapus;
+  :Menampilkan menu komentar;
+else (Batal)
+endif
+
+|Pengguna|
+stop
+
+@enduml

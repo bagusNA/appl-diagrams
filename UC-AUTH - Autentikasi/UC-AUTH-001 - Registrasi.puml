@@ -1,0 +1,52 @@
+@startuml Registrasi
+!pragma useVerticalIf on
+
+title Registrasi
+
+|Pengguna|
+start
+:Memilih menu registrasi;
+
+|Sistem|
+:Menampilkan menu registrasi;
+
+|Pengguna|
+:Memilih metode registrasi;
+
+if () then (Email)
+  :Mengisi data registrasi;
+
+  |DBMS|
+  :Mencari apakah sudah terdaftar atau belum;
+
+  |Sistem|
+  if (Email terdaftar?) then (Tidak)
+    :Tampilkan pesan email sudah terdaftar;
+
+    |Pengguna|
+    :Mengklik tombol daftar;
+
+    |Sistem|
+    :Menampilkan popup konfirmasi;
+
+    |Pengguna|
+    if (Konfirmasi popup) then (Ok)
+      |DBMS|
+      :Menyimpan data registrasi;
+
+      |Sistem|
+      :Menampilkan pesan berhasil;
+      :Menampilkan halaman peta bencana;
+    else (Batal)
+    endif
+  else (Ya)
+    :Tampilkan warna accent success pada input email;
+  endif
+else (OAuth)
+  |OAuth Provider|
+  :Menerima data pengguna dari provider;
+endif 
+
+|Pengguna|
+stop
+@enduml

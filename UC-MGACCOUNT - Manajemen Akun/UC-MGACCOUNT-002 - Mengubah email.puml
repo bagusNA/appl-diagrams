@@ -1,0 +1,57 @@
+@startuml Mengubah email
+title Mengubah email
+
+|Pengguna|
+:Memilih menu edit akun;
+
+|Sistem|
+:Menampilkan menu edit;
+
+|Pengguna|
+:Mengklik tombol ubah email;
+
+|Sistem|
+:Menampilkan popup isian email baru;
+
+|Pengguna|
+:Mengisi alamat email baru;
+
+|DBMS|
+:Mencari apakah alamat email sudah terdaftar;
+
+|Sistem|
+if (Email terdaftar?) then (Ya)
+  :Meng-enable-kan tombol lanjut;
+
+  |Pengguna|
+  :Mengklik tombol lanjut;
+
+  |Email Service|
+  :Mengirim kode OTP ke alamat email akun;
+
+  |Sistem|
+  :Menampilkan pesan Kode OTP telah dikirimkan;
+  :Menampilkan menu kode OTP;
+
+  |Pengguna|
+  :Mengisi kode OTP;
+  
+  |Sistem|
+  :Mengecek kode OTP;
+
+  if (Kode OTP sesuai?) then (Tidak)
+  else (Ya)
+    |DBMS|
+    :Menyimpan email baru;
+
+    |Sistem|
+    :Menampilkan pesan berhasil;
+    :Menampilkan menu edit akun;
+  endif
+else (Tidak)
+  :Menampilkan pesan email tidak terdaftar;
+endif
+
+stop
+
+@enduml

@@ -1,0 +1,59 @@
+@startuml Menambahkan data bencana alam secara bulk
+title Menambahkan data bencana alam secara bulk
+
+|Administrator & Perwakilan BPBD|
+start
+:Memilih menu daftar data bencana alam;
+:Memilih filter dan sort;
+
+|Sistem|
+:Menampilkan menu daftar data bencana alam;
+
+|Administrator & Perwakilan BPBD|
+:Memilih menu tambah bulk data bencana alam;
+
+|Sistem|
+:Menampilkan menu tambah bulk data bencana alam;
+
+|Administrator & Perwakilan BPBD|
+:Mengunduh template isian;
+
+|Sistem|
+:Mengirimkan template file sebagai unduhan;
+
+|Administrator & Perwakilan BPBD|
+:Mengunggah file excel data bulk bencana alam;
+:Mengklik tombol unggah;
+
+|Sistem|
+:Menampilkan popup konfirmasi;
+
+|Administrator & Perwakilan BPBD|
+:Mengonfirmasi pengisian data bulk bencana alam;
+
+if (Konfirmasi popup) then (Batal)
+else (Ok)
+  |Sistem|
+  :Mencari kesalahan pengisian data pada data bulk;
+
+  if (Ada kesalahan pengisian?) then (Ada)
+  else (Tidak Ada)
+    |DBMS|
+    :Menyimpan data bencana alam;
+
+    if (Ada media unggahan?) then (Tidak ada)
+    else (Ada)
+      |Storage Bucket|
+      :Menyimpan media unggahan;
+    endif
+
+    |Sistem|
+    :Menampilkan pesan berhasil;
+    :Menampilkan menu daftar data bencana alam;
+  endif
+endif
+
+|Administrator & Perwakilan BPBD|
+stop
+
+@enduml

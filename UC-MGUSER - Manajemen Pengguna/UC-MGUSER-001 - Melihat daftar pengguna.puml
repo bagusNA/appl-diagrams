@@ -1,0 +1,14 @@
+@startuml Melihat daftar pengguna
+title Melihat daftar pengguna
+
+|Administrator|
+start
+:Memilih menu daftar pengguna;
+:Memilih filter dan sort;
+
+|Sistem|
+:Menampilkan menu daftar pengguna;
+
+stop
+
+@enduml

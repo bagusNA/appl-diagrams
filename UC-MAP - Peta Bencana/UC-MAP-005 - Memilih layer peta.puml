@@ -1,0 +1,20 @@
+@startuml Memilih layer peta
+
+title Memilih layer peta
+ 
+|Pengguna|
+start
+:Memilih tombol layer peta;
+
+|Sistem|
+:Menampilkan pilihan layer peta;
+
+|Pengguna|
+:Memilih layer peta yang ditampilkan;
+
+|Sistem|
+:Menampilkan layer peta yang dipilih;
+
+stop
+
+@enduml

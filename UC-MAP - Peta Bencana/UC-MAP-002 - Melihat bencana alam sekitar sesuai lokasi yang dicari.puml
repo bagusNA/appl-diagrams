@@ -1,0 +1,23 @@
+@startuml Melihat bencana alam sekitar sesuai lokasi yang dicari
+
+title Melihat bencana alam sekitar sesuai lokasi yang dicari
+
+|Pengguna|
+start
+:Mengklik input pencarian lokasi;
+:Menginputkan lokasi yang dicari;
+
+|Sistem|
+:Menampilkan rekomendasi lokasi;
+
+|Pengguna|
+:Mengklik tombol cari atau Enter;
+
+|Sistem|
+:Menampilkan data bencana alam di sekitar lokasi yang dicari;
+:Zoom in ke lokasi yang dicari;
+:Menampilkan rekapitulasi data bencana alam;
+
+stop
+
+@enduml

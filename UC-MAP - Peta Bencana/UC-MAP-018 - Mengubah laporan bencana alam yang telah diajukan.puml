@@ -1,0 +1,43 @@
+@startuml Mengubah laporan bencana alam yang telah diajukan
+
+title Mengubah laporan bencana alam yang telah diajukan
+
+|Pengguna|
+start
+:Memilih menu laporan bencana alam;
+
+|Sistem|
+:Menampilkan menu laporan bencana alam;
+
+|Pengguna|
+:Memilih tombol edit pada laporan yang telah dipilih;
+:Mengisi jenis, lokasi, dan deskripsi bencana alam;
+:Mengunggah media (foto atau video) terkait bencana alam;
+:Mengklik tombol laporkan;
+
+|Sistem|
+:Menampilkan popup konfirmasi;
+
+|Pengguna|
+:Mengonfirmasi popup;
+
+if (Konfirmasi popup) then (Batal)
+else (Ok)
+  |DBMS|
+  :Menyimpan perubahan laporan;
+
+  if (Ada media unggahan?) then (Tidak ada)
+  else (Ada)
+    |Storage Bucket|
+    :Menyimpan media unggahan;
+  endif
+
+  |Sistem|
+  :Menampilkan pesan berhasil;
+  :Menampilkan detail laporan yang telah dibuat;
+endif
+
+|Pengguna|
+stop
+
+@enduml

@@ -1,0 +1,52 @@
+@startuml Membuat daftar akun khusus
+title Membuat daftar akun khusus
+
+|Administrator|
+start
+:Memilih menu daftar akun khusus;
+:Memilih filter dan sort;
+
+|Sistem|
+:Menampilkan menu daftar akun khusus;
+
+|Administrator|
+:Memilih menu tambah akun;
+
+|Sistem|
+:Menampilkan menu tambah akun khusus;
+
+|Administrator|
+:Mengisi data akun khusus;
+
+|DBMS|
+:Mencari apakah email sudah terdaftar atau belum;
+
+|Sistem|
+if (Email sudah terdaftar?) then (Sudah terdaftar)
+else (Belum terdaftar)
+  :Meng-enable-kan tombol simpan;
+
+  |Administrator|
+  :Mengklik tombol simpan;
+  
+  |Sistem|
+  :Menampilkan popup konfirmasi;
+
+  |Administrator|
+  :Mengonfirmasi pembuatan akun khusus;
+
+  if (Konfirmasi popup) then (Batal)
+  else (Ok)
+    |DBMS|
+    :Menyimpan akun baru;
+
+    |Sistem|
+    :Menampilkan pesan berhasil;
+    :Menampilkan menu daftar akun khusus;
+  endif
+endif
+
+|Administrator|
+stop
+
+@enduml

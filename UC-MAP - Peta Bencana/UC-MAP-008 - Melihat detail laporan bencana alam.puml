@@ -1,0 +1,15 @@
+@startuml Melihat detail laporan bencana alam
+
+title Melihat detail laporan bencana alam
+ 
+|Pengguna|
+start
+:Memilih laporan bencana alam pada peta;
+
+|Sistem|
+:Zoom in ke daerah sekitar laporan bencana alam;
+:Menampilkan detail laporan bencana alam;
+
+stop
+
+@enduml

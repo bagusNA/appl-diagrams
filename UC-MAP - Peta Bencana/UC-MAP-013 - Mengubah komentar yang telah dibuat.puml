@@ -1,0 +1,33 @@
+@startuml Mengubah komentar yang dibuat 
+
+title Mengubah komentar yang dibuat
+ 
+|Pengguna|
+start
+:Memilih menu komentar;
+
+|Sistem|
+:Menampilkan komentar;
+
+|Pengguna|
+:Memilih menu edit pada komentar yang telah dibuat;
+:Menginputkan konten komentar;
+:Memilih media (gambar atau video) untuk dilampirkan;
+:Mengklik tombol unggah / komentar;
+
+|DBMS|
+:Menyimpan komentar;
+
+if (Ada media unggahan?) then (Tidak ada)
+else (Ada)
+|Storage Bucket|
+:Menyimpan media unggahan;
+endif
+
+|Sistem|
+:Menampilkan pesan berhasil diubah;
+:Menampilkan komentar yang telah diubah;
+
+stop
+
+@enduml

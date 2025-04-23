@@ -1,0 +1,20 @@
+@startuml Memilih jenis peta
+
+title Memilih jenis peta
+ 
+|Pengguna|
+start
+:Memilih tombol jenis peta;
+
+|Sistem|
+:Menampilkan pilihan jenis peta;
+
+|Pengguna|
+:Memilih jenis peta yang ditampilkan;
+
+|Sistem|
+:Menampilkan jenis peta yang dipilih;
+
+stop
+
+@enduml

@@ -1,0 +1,47 @@
+@startuml Menonaktifkan akun khusus
+title Menonaktifkan akun khusus
+
+|Administrator|
+start
+:Memilih menu daftar akun khusus;
+:Memilih filter dan sort;
+
+|Sistem|
+:Menampilkan menu daftar akun khusus;
+
+|Administrator|
+:Memilih tombol detail pada akun khusus yang dipilih;
+
+|Sistem|
+:Menampilkan menu detail akun khusus;
+
+|Administrator|
+:Mengklik tombol nonaktifkan akun;
+
+|Sistem|
+:Menampilkan popup isian alasan;
+
+|Administrator|
+:Mengisi alasan penonaktifan;
+:Mengklik tombol nonaktifkan pada popup;
+
+|Sistem|
+:Menampilkan konfirmasi;
+
+|Administrator|
+:Mengonfirmasi penonaktifan akun;
+
+if (Konfirmasi popup) then (Batal)
+else (Ok)
+  |DBMS|
+  :Menyimpan penonaktifan akun;
+
+  |Sistem|
+  :Menampilkan pesan berhasil;
+  :Menampilkan menu detail akun khusus;
+endif
+
+|Administrator|
+stop
+
+@enduml

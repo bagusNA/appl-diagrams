@@ -1,0 +1,40 @@
+@startuml Mengubah password 
+title Mengubah password
+
+|Pengguna|
+:Memilih menu edit akun;
+
+|Sistem|
+:Menampilkan menu edit;
+
+|Pengguna|
+:Mengklik tombol hapus akun;
+
+|Sistem|
+:Menampilkan popup isian alasan;
+
+|Pengguna|
+:Mengisi alasan penghapusan;
+:Mengklik tombol lanjut;
+
+|Sistem|
+:Menampilkan popup konfirmasi;
+
+|Pengguna|
+:Mengisi password akun;
+:Mengonfirmasi penghapusan akun;
+
+if (Konfirmasi popup) then (Batal)
+else (Ok)
+  |DBMS|
+  :Menghapus akun;
+
+  |Sistem|
+  :Menampilkan pesan berhasil;
+  :Menampilkan peta bencana;
+endif
+
+|Pengguna|
+stop
+
+@enduml

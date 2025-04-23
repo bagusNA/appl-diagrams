@@ -1,0 +1,51 @@
+@startuml Mengubah role pengguna
+title Mengubah role pengguna
+
+|Administrator|
+start
+:Memilih menu daftar role pengguna;
+:Memilih filter dan sort;
+
+|Sistem|
+:Menampilkan menu daftar role pengguna;
+
+|Administrator|
+:Memilih tombol edit pada role pengguna;
+
+|Sistem|
+:Menampilkan menu edit role pengguna;
+:Menampilkan daftar pengguna yang memiliki role tersebut;
+
+|Administrator|
+:Mengisi isian nama role;
+:Memilih module (halaman) apa saja yang dapat diakses oleh role;
+:Mengklik tombol tambah anggota;
+
+|Sistem|
+:Menampilkan popup berisi pilihan akun-akun khusus terdaftar;
+
+|Administrator|
+:Memilih akun-akun khusus yang akan menjadi anggota dari role;
+:Memilih tombol simpan;
+
+|Sistem|
+:Menampilkan konfirmasi;
+
+|Administrator|
+:Mengonfirmasi perubahan role;
+
+if (Konfirmasi popup) then (Batal)
+else (Ok)
+  |DBMS|
+  :Menyimpan perubahan role;
+  :Menyimpan anggota-anggota dari role baru;
+
+  |Sistem|
+  :Menampilkan pesan berhasil;
+  :Menampilkan menu detail role pengguna;
+endif
+
+|Administrator|
+stop
+
+@enduml
