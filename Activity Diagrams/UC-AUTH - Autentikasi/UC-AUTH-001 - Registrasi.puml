@@ -1,5 +1,5 @@
 @startuml UC-AUTH-001 - Registrasi
-!pragma useVerticalIf on
+skinparam wrapWidth 140
 
 title Registrasi
 
@@ -17,35 +17,44 @@ if () then (Email)
   :Mengisi data registrasi;
 
   |DBMS|
-  :Mencari apakah sudah terdaftar atau belum;
+  :Mencari apakah email sudah terdaftar atau belum;
 
   |Sistem|
   if () then (Email tidak terdaftar)
-    :Tampilkan warna accent success pada input email;
+    fork
+      :Tampilkan warna accent success pada input email;
+    fork again
+      :Meng-enable-kan tombol daftar;
+    end fork
 
     |Pengguna|
     :Mengklik tombol daftar;
-
-    |Sistem|
-    :Menampilkan popup konfirmasi;
-
-    |Pengguna|
-    if () then (Konfirmasi ok)
-      |DBMS|
-      :Menyimpan data registrasi;
-
-      |Sistem|
-      :Menampilkan pesan berhasil;
-      :Menampilkan halaman peta bencana;
-    else (Konfirmasi batal)
-    endif
   else (Email terdaftar)
+  |Sistem|
     :Tampilkan pesan email sudah terdaftar;
   endif
 else (OAuth)
   |OAuth Provider|
   :Menerima data pengguna dari provider OAuth;
 endif 
+
+    |Sistem|
+    :Menampilkan popup konfirmasi;
+
+    |Pengguna|
+    :Mengonfirmasi data pendaftaran;
+    if () then (Konfirmasi ok)
+      |DBMS|
+      :Menyimpan data registrasi;
+
+      |Sistem|
+      fork
+        :Menampilkan pesan berhasil;
+      fork again
+        :Menampilkan halaman peta bencana;
+      end fork
+    else (Konfirmasi batal)
+    endif
 
 |Pengguna|
 stop

@@ -1,4 +1,5 @@
 @startuml UC-MAP-001 - Melihat bencana alam sekitar sesuai lokasi saat ini
+skinparam wrapWidth 140
 
 title Melihat bencana alam sekitar sesuai lokasi saat ini
 
@@ -10,14 +11,18 @@ start
 :Mencari lokasi pengguna dengan geolocation;
 
 |Sistem|
-switch (Lokasi ditemukan?)
-case (Lokasi ditemukan)
-  :Menampilkan data bencana alam sesuai lokasi pengguna;
-  :Zoom in ke daerah lokasi pengguna;
-  :Menampilkan rekapitulasi data bencana alam;
-case (Lokasi tidak ditemukan)
+switch ()
+case (Ditemukan)
+  fork
+    :Menampilkan data bencana alam sesuai lokasi pengguna;
+  fork again
+    :Zoom in ke daerah lokasi pengguna;
+  fork again
+    :Menampilkan rekapitulasi data bencana alam;
+  endfork
+case (Tidak ditemukan)
   :Tampilkan pesan lokasi tidak ditemukan;
-case (Lokasi di luar Indonesia)
+case (Di luar Indonesia)
   :Tampilkan pesan lokasi berada di luar Indonesia;
 endswitch
 

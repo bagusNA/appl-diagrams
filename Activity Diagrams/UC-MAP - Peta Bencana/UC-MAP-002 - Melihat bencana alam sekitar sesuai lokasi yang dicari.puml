@@ -1,4 +1,5 @@
 @startuml UC-MAP-002 - Melihat bencana alam sekitar sesuai lokasi yang dicari
+skinparam wrapWidth 140
 
 title Melihat bencana alam sekitar sesuai lokasi yang dicari
 
@@ -14,9 +15,13 @@ start
 :Mengklik tombol cari atau Enter;
 
 |Sistem|
-:Menampilkan data bencana alam di sekitar lokasi yang dicari;
-:Zoom in ke lokasi yang dicari;
-:Menampilkan rekapitulasi data bencana alam;
+  fork
+    :Menampilkan data bencana alam di sekitar lokasi yang dicari;
+  fork again
+    :Zoom in ke lokasi yang dicari;
+  fork again
+    :Menampilkan rekapitulasi data bencana alam;
+  endfork
 
 stop
 

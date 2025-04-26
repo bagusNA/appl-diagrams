@@ -1,4 +1,6 @@
 @startuml UC-MGUSER-012 - Mengubah data akun khusus
+skinparam wrapWidth 140
+
 title Mengubah data akun khusus
 
 |Administrator|
@@ -40,8 +42,11 @@ if () then (Email belum terdaftar)
     :Menyimpan perubahan data akun khusus;
 
     |Sistem|
-    :Menampilkan pesan berhasil;
-    :Menampilkan menu detail akun khusus;
+    fork
+      :Menampilkan pesan berhasil;
+    fork again
+      :Menampilkan menu detail akun khusus;
+    endfork
   endif
 else (Email sudah terdaftar)
   |Sistem|

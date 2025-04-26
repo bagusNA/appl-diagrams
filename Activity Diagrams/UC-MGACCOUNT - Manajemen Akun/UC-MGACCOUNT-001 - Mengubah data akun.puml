@@ -1,4 +1,6 @@
 @startuml UC-MGACCOUNT-001 - Mengubah data akun
+skinparam wrapWidth 140
+
 title Mengubah data akun
 
 |Pengguna|
@@ -35,8 +37,11 @@ else (Konfirmasi Ok)
   endif
 
   |Sistem|
-  :Menampilkan pesan berhasil;
-  :Menampilkan menu edit akun;
+  fork
+    :Menampilkan pesan berhasil;
+  fork again
+    :Menampilkan menu edit akun;
+  endfork
 endif
 
 |Pengguna|

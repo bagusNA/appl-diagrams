@@ -1,4 +1,6 @@
 @startuml UC-MGDISASTER-011 - Menambahkan data bencana alam secara bulk
+skinparam wrapWidth 140
+
 title Menambahkan data bencana alam secara bulk
 
 |Administrator & Perwakilan BPBD|
@@ -48,8 +50,11 @@ else (Konfirmasi Ok)
     endif
 
     |Sistem|
-    :Menampilkan pesan berhasil;
-    :Menampilkan menu daftar data bencana alam;
+    fork
+      :Menampilkan pesan berhasil;
+    fork again
+      :Menampilkan menu daftar data bencana alam;
+    endfork
   endif
 endif
 

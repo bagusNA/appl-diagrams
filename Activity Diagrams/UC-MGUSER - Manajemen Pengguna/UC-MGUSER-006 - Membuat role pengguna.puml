@@ -1,4 +1,6 @@
 @startuml UC-MGUSER-006 - Membuat role pengguna
+skinparam wrapWidth 140
+
 title Membuat role pengguna
 
 |Administrator|
@@ -40,8 +42,11 @@ else (Konfirmasi Ok)
   :Menyimpan anggota-anggota dari role baru;
 
   |Sistem|
-  :Menampilkan pesan berhasil;
-  :Menampilkan menu detail role pengguna;
+  fork
+    :Menampilkan pesan berhasil;
+  fork again
+    :Menampilkan menu detail role pengguna;
+  endfork
 endif
 
 |Administrator|

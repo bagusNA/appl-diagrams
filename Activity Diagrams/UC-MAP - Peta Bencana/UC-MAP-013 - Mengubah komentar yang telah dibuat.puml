@@ -1,4 +1,5 @@
 @startuml UC-MAP-013 - Mengubah komentar yang dibuat 
+skinparam wrapWidth 140
 
 title Mengubah komentar yang dibuat
  
@@ -25,8 +26,11 @@ else (Ada unggahan)
 endif
 
 |Sistem|
-:Menampilkan pesan berhasil diubah;
-:Menampilkan komentar yang telah diubah;
+fork
+  :Menampilkan pesan berhasil diubah;
+fork again
+  :Menampilkan komentar yang telah diubah;
+endfork
 
 stop
 

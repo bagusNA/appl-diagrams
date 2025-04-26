@@ -1,6 +1,7 @@
 @startuml UC-MGACCOUNT-002 - Mengubah email
-title Mengubah email
+skinparam wrapWidth 140
 
+title Mengubah email
 |Pengguna|
 :Memilih menu edit akun;
 
@@ -46,8 +47,11 @@ if () then (Email belum terdaftar)
     :Menyimpan email baru;
 
     |Sistem|
-    :Menampilkan pesan berhasil;
-    :Menampilkan menu edit akun;
+    fork
+      :Menampilkan pesan berhasil;
+    fork again
+      :Menampilkan menu edit akun;
+    endfork
   endif
 else (Email sudah terdaftar)
   :Menampilkan pesan email sudah terdaftar;

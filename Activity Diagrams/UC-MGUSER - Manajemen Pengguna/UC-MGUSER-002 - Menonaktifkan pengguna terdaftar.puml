@@ -1,4 +1,6 @@
 @startuml UC-MGUSER-002 - Menonaktifkan pengguna terdaftar
+skinparam wrapWidth 140
+
 title Menonaktifkan pengguna terdaftar
 
 |Administrator|
@@ -26,8 +28,11 @@ else (Konfirmasi Ok)
   :Menyimpan penonaktifan pengguna;
 
   |Sistem|
-  :Menampilkan pesan berhasil;
-  :Menampilkan menu daftar pengguna;
+  fork
+    :Menampilkan pesan berhasil;
+  fork again
+    :Menampilkan menu daftar pengguna;
+  endfork
 endif
 
 |Administrator|

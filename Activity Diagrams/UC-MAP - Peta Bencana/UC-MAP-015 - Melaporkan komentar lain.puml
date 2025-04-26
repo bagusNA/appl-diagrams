@@ -1,4 +1,5 @@
 @startuml UC-MAP-015 - Melaporkan komentar lain
+skinparam wrapWidth 140
 
 title Melaporkan komentar lain
  
@@ -31,8 +32,11 @@ else (Konfirmasi Ok)
   :Menyimpan laporan;
 
   |Sistem|
-  :Menampilkan pesan berhasil menyimpan laporan;
-  :Menampilkan daftar komentar;
+  fork
+    :Menampilkan pesan berhasil menyimpan laporan;
+  fork again
+    :Menampilkan daftar komentar;
+  endfork
 endif
 
 |Pengguna|

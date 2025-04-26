@@ -1,4 +1,6 @@
 @startuml UC-MGUSER-014 - Menghapus akun khusus
+skinparam wrapWidth 140
+
 title Menghapus akun khusus
 
 |Administrator|
@@ -37,8 +39,11 @@ else (Konfirmasi Ok)
   :Menghapus akun;
 
   |Sistem|
+  fork
   :Menampilkan pesan berhasil;
+  fork again
   :Menampilkan menu daftar akun khusus;
+  endfork;
 endif
 
 |Administrator|

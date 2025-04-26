@@ -1,4 +1,5 @@
 @startuml UC-MAP-014 - Menghapus komentar yang dibuat 
+skinparam wrapWidth 140
 
 title Menghapus komentar yang dibuat
  
@@ -29,8 +30,11 @@ if () then (Konfirmasi ok)
   endif
 
   |Sistem|
-  :Menampilkan pesan berhasil dihapus;
-  :Menampilkan menu komentar;
+  fork
+    :Menampilkan pesan berhasil dihapus;
+  fork again
+    :Menampilkan menu komentar;
+  endfork 
 else (Konfirmasi batal)
 endif
 

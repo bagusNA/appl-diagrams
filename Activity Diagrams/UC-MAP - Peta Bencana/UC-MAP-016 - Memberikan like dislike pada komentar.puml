@@ -1,4 +1,5 @@
 @startuml UC-MAP-016 - Memberikan like dislike pada komentar
+skinparam wrapWidth 140
 
 title Memberikan like dislike pada komentar
  
@@ -10,7 +11,7 @@ start
 :Menampilkan komentar;
 
 |Pengguna|
-:Memilih tombol like/dislike pada komentar yang telah dibuat;
+:Memilih tombol like/dislike pada komentar;
 
 |DBMS|
 :Menyimpan like/dislike;

@@ -1,4 +1,5 @@
 @startuml UC-MAP-005 - Memilih layer peta
+skinparam wrapWidth 140
 
 title Memilih layer peta
  

@@ -1,4 +1,6 @@
 @startuml UC-MGUSER-010 - Membuat daftar akun khusus
+skinparam wrapWidth 140
+
 title Membuat daftar akun khusus
 
 |Administrator|
@@ -41,8 +43,11 @@ if () then (Email belum terdaftar)
     :Menyimpan akun baru;
 
     |Sistem|
-    :Menampilkan pesan berhasil;
-    :Menampilkan menu daftar akun khusus;
+    fork
+      :Menampilkan pesan berhasil;
+    fork again
+      :Menampilkan menu daftar akun khusus;
+    endfork
   endif
 else (Email sudah terdaftar)
   :Menampilkan pesan email sudah terdaftar;

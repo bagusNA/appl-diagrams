@@ -1,4 +1,6 @@
 @startuml UC-MGUSER-007 - Mengubah role pengguna
+skinparam wrapWidth 140
+
 title Mengubah role pengguna
 
 |Administrator|
@@ -41,8 +43,11 @@ else (Konfirmasi Ok)
   :Menyimpan anggota-anggota dari role baru;
 
   |Sistem|
-  :Menampilkan pesan berhasil;
-  :Menampilkan menu detail role pengguna;
+  fork
+    :Menampilkan pesan berhasil;
+  fork again
+    :Menampilkan menu detail role pengguna;
+  endfork
 endif
 
 |Administrator|

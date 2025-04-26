@@ -1,4 +1,6 @@
 @startuml UC-MGDISASTER-008 - Mengubah data bencana alam
+skinparam wrapWidth 140
+
 title Mengubah data bencana alam
 
 |Administrator & Perwakilan BPBD|
@@ -38,8 +40,11 @@ else (Konfirmasi Ok)
   endif
 
   |Sistem|
-  :Menampilkan pesan berhasil;
-  :Menampilkan menu detail data bencana alam yang telah diubah;
+  fork
+    :Menampilkan pesan berhasil;
+  fork again
+    :Menampilkan menu detail data bencana alam yang telah diubah;
+  endfork
 endif
 
 |Administrator & Perwakilan BPBD|

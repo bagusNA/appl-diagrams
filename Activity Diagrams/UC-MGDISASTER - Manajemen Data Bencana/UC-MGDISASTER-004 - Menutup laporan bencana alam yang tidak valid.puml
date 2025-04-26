@@ -1,4 +1,6 @@
 @startuml UC-MGDISASTER-004 - Menutup laporan bencana alam yang tidak valid
+skinparam wrapWidth 140
+
 title Menutup laporan bencana alam yang tidak valid
 
 |Administrator & Perwakilan BPBD|
@@ -32,8 +34,11 @@ else (Konfirmasi Ok)
   :Menyimpan penutupan laporan;
  
   |Sistem|
-  :Menampilkan pesan berhasil;
-  :Menampilkan menu daftar laporan bencana alam dari pengguna;
+  fork
+    :Menampilkan pesan berhasil;
+  fork again
+    :Menampilkan menu daftar laporan bencana alam dari pengguna;
+  endfork
 endif
 
 |Administrator & Perwakilan BPBD|

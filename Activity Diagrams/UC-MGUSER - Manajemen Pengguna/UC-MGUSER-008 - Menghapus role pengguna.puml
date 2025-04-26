@@ -1,4 +1,6 @@
 @startuml UC-MGUSER-008 - Menghapus role pengguna
+skinparam wrapWidth 140
+
 title Menghapus role pengguna
 
 |Administrator|
@@ -13,8 +15,11 @@ start
 :Memilih tombol detail pada role pengguna;
 
 |Sistem|
-:Menampilkan menu detail role pengguna;
-:Menampilkan daftar pengguna yang memiliki role tersebut;
+fork
+  :Menampilkan menu detail role pengguna;
+fork again
+  :Menampilkan daftar pengguna yang memiliki role tersebut;
+endfork
 
 |Administrator|
 :Mengklik tombol hapus;
@@ -38,8 +43,11 @@ else (Konfirmasi Ok)
   :Menghapus role;
 
   |Sistem|
+  fork
   :Menampilkan pesan berhasil;
+  fork again
   :Menampilkan menu daftar role pengguna;
+  endfork
 endif
 
 |Administrator|

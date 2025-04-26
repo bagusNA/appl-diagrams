@@ -1,4 +1,5 @@
 @startuml UC-MAP-019 - Menghapus laporan bencana alam yang telah diajukan
+skinparam wrapWidth 140
 
 title Menghapus laporan bencana alam yang telah diajukan
 

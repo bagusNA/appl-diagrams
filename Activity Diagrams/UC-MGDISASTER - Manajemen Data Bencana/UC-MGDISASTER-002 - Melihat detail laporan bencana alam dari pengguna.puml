@@ -1,4 +1,6 @@
 @startuml UC-MGDISASTER-002 - Melihat detail laporan bencana alam dari pengguna
+skinparam wrapWidth 140
+
 title Melihat detail laporan bencana alam dari pengguna
 
 |Administrator & Perwakilan BPBD|

@@ -1,4 +1,6 @@
 @startuml UC-MGDISASTER-003 - Menandai laporan bencana alam sebagai benar-benar terjadi (verifikasi laporan)
+skinparam wrapWidth 140
+
 title Menandai laporan bencana alam sebagai benar-benar terjadi (verifikasi laporan)
 
 |Administrator & Perwakilan BPBD|
@@ -37,8 +39,11 @@ else (Konfirmasi Ok)
   endif
  
   |Sistem|
-  :Menampilkan pesan berhasil;
-  :Menampilkan menu daftar laporan bencana alam dari pengguna;
+  fork
+    :Menampilkan pesan berhasil;
+  fork again
+    :Menampilkan menu daftar laporan bencana alam dari pengguna;
+  endfork
 endif
 
 |Administrator & Perwakilan BPBD|

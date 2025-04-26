@@ -1,5 +1,7 @@
-@startuml UC-MGACCOUNT-004 - Mengubah password 
-title Mengubah password
+@startuml UC-MGACCOUNT-004 - Menghapus akun
+skinparam wrapWidth 140
+
+title Menghapus akun
 
 |Pengguna|
 :Memilih menu edit akun;
@@ -30,8 +32,11 @@ else (Konfirmasi Ok)
   :Menghapus akun;
 
   |Sistem|
-  :Menampilkan pesan berhasil;
-  :Menampilkan peta bencana;
+  fork
+    :Menampilkan pesan berhasil;
+  fork again
+    :Menampilkan peta bencana;
+  endfork
 endif
 
 |Pengguna|

@@ -1,4 +1,6 @@
 @startuml UC-MGUSER-004 - Melihat daftar role pengguna
+skinparam wrapWidth 140
+
 title Melihat daftar role pengguna
 
 |Administrator|

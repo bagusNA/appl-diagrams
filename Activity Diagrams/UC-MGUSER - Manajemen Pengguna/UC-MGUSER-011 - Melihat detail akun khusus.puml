@@ -1,4 +1,6 @@
 @startuml UC-MGUSER-011 - Melihat detail akun khusus
+skinparam wrapWidth 140
+
 title Melihat detail akun khusus (Administrator / Perwakilan BPBD)
 
 |Administrator|

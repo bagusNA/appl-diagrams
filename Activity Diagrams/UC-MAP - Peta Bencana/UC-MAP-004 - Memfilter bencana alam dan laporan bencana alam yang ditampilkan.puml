@@ -1,5 +1,5 @@
 @startuml UC-MAP-004 - Memfilter bencana alam dan laporan bencana alam yang ditampilkan
-skinparam wrapWidth 200
+skinparam wrapWidth 140
 
 title Memfilter bencana alam dan laporan bencana alam yang ditampilkan
 
@@ -15,11 +15,10 @@ start
 :Mengklik tombol filter;
 
 |Sistem|
-:Menampilkan data bencana alam sesuai filter yang digunakan;
-
 if () then (Tidak ada bencana alam yang memenuhi)
   :Tampilkan pesan tidak ada bencana alam yang memenuhi kriteria;
 else (Ada bencana alam yang memenuhi)
+  :Menampilkan data bencana alam sesuai filter yang digunakan;
 endif
 
 stop

@@ -1,4 +1,5 @@
 @startuml UC-MAP-021 - Melaporkan laporan bencana alam yang diunggah pengguna lain
+skinparam wrapWidth 140
 
 title Melaporkan laporan bencana alam yang diunggah pengguna lain
 
@@ -26,8 +27,11 @@ else (Konfirmasi Ok)
   :Menyimpan laporan;
   
   |Sistem|
-  :Menampilkan pesan berhasil;
-  :Menampilkan detail laporan bencana alam yang telah dilaporkan;
+  fork
+    :Menampilkan pesan berhasil;
+  fork again
+    :Menampilkan detail laporan bencana alam yang telah dilaporkan;
+  endfork
 endif
 
 |Pengguna|

@@ -1,4 +1,6 @@
 @startuml UC-MGDISASTER-013 - Melihat log aktivitas data bencana alam;
+skinparam wrapWidth 140
+
 title Melihat log aktivitas data bencana alam;
 
 |Administrator & Perwakilan BPBD|

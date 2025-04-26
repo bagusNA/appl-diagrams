@@ -1,4 +1,6 @@
 @startuml UC-MGUSER-013 - Menonaktifkan akun khusus
+skinparam wrapWidth 140
+
 title Menonaktifkan akun khusus
 
 |Administrator|
@@ -37,8 +39,11 @@ else (Konfirmasi Ok)
   :Menyimpan penonaktifan akun;
 
   |Sistem|
-  :Menampilkan pesan berhasil;
-  :Menampilkan menu detail akun khusus;
+  fork
+    :Menampilkan pesan berhasil;
+  fork again
+    :Menampilkan menu detail akun khusus;
+  endfork
 endif
 
 |Administrator|

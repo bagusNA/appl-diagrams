@@ -1,4 +1,6 @@
 @startuml UC-MGUSER-005 - Melihat detail role pengguna
+skinparam wrapWidth 140
+
 title Melihat detail role pengguna
 
 |Administrator|
@@ -13,8 +15,11 @@ start
 :Memilih tombol detail pada role pengguna yang dipilih;
 
 |Sistem|
-:Menampilkan detail role pengguna yang dipilih;
-:Menampilkan daftar pengguna yang memiliki role tersebut;
+fork
+  :Menampilkan detail role pengguna yang dipilih;
+fork again
+  :Menampilkan daftar pengguna yang memiliki role tersebut;
+endfork
 
 stop
 

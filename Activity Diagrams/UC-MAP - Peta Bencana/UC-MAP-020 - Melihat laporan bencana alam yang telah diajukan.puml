@@ -1,6 +1,7 @@
 @startuml UC-MAP-020 - Melihat daftar laporan bencana alam yang telah diajukan
+skinparam wrapWidth 140
 
-title Membuat Laporan Bencana Alam
+title Melihat daftar laporan alam yang telah diajukan
 
 |Pengguna|
 start

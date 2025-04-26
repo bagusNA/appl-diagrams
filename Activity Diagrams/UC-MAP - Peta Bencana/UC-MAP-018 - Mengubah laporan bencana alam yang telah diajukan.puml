@@ -1,4 +1,5 @@
 @startuml UC-MAP-018 - Mengubah laporan bencana alam yang telah diajukan
+skinparam wrapWidth 140
 
 title Mengubah laporan bencana alam yang telah diajukan
 
@@ -33,8 +34,11 @@ else (Konfirmasi Ok)
   endif
 
   |Sistem|
-  :Menampilkan pesan berhasil;
-  :Menampilkan detail laporan yang telah dibuat;
+  fork
+    :Menampilkan pesan berhasil;
+  fork again
+    :Menampilkan detail laporan yang telah dibuat;
+  endfork
 endif
 
 |Pengguna|

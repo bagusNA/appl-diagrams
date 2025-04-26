@@ -1,5 +1,5 @@
 @startuml UC-AUTH-003 - Logout
-!pragma useVerticalIf on
+skinparam wrapWidth 140
 
 title Logout
 
@@ -14,8 +14,12 @@ start
 if () then (Konfirmasi ok)
   |Sistem|
   :Menghapus session pengguna;
-  :Menampilkan pesan berhasil;
-  :Menampilkan halaman peta bencana;
+
+  fork
+    :Menampilkan pesan berhasil;
+  fork again
+    :Menampilkan halaman peta bencana;
+  endfork
 else (Konfirmasi batal)
 endif 
 

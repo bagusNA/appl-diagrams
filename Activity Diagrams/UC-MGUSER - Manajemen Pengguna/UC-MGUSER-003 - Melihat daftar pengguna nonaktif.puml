@@ -1,4 +1,6 @@
 @startuml UC-MGUSER-003 - Melihat daftar pengguna nonaktif
+skinparam wrapWidth 140
+
 title Melihat daftar pengguna nonaktif
 
 |Administrator|
