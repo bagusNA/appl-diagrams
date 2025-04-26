@@ -20,7 +20,7 @@ title Mengubah email
 :Mencari apakah alamat email sudah terdaftar;
 
 |Sistem|
-if (Email terdaftar?) then (Ya)
+if () then (Email belum terdaftar)
   :Meng-enable-kan tombol lanjut;
 
   |Pengguna|
@@ -39,8 +39,9 @@ if (Email terdaftar?) then (Ya)
   |Sistem|
   :Mengecek kode OTP;
 
-  if (Kode OTP sesuai?) then (Tidak)
-  else (Ya)
+  if () then (OTP tidak sesuai)
+    :Menampilkan pesan kode OTP salah;
+  else (OTP sesuai)
     |DBMS|
     :Menyimpan email baru;
 
@@ -48,8 +49,8 @@ if (Email terdaftar?) then (Ya)
     :Menampilkan pesan berhasil;
     :Menampilkan menu edit akun;
   endif
-else (Tidak)
-  :Menampilkan pesan email tidak terdaftar;
+else (Email sudah terdaftar)
+  :Menampilkan pesan email sudah terdaftar;
 endif
 
 stop

@@ -17,9 +17,9 @@ start
 |DBMS|
 :Menyimpan komentar;
 
-if (Ada media unggahan?) then (Tidak ada)
-else (Ada)
 |Storage Bucket|
+if () then (Tidak ada unggahan)
+else (Ada unggahan)
 :Menyimpan media unggahan;
 endif
 

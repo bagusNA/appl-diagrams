@@ -18,20 +18,20 @@ start
 |Pengguna|
 :Mengonfirmasi penghapusan;
 
-if (Konfirmasi penghapusan) then (Ok)
+if () then (Konfirmasi ok)
   |DBMS|
   :Menghapus komentar;
 
   |Storage Bucket|
-  if (Ada media unggahan?) then (Tidak ada)
-  else (Ada)
+  if () then (Tidak ada unggahan)
+  else (Ada unggahan)
   :Menghapus media unggahan;
   endif
 
   |Sistem|
   :Menampilkan pesan berhasil dihapus;
   :Menampilkan menu komentar;
-else (Batal)
+else (Konfirmasi batal)
 endif
 
 |Pengguna|

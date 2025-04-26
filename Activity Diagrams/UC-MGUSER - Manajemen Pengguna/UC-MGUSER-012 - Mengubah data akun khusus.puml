@@ -22,8 +22,7 @@ start
 :Mencari apakah email sudah terdaftar atau belum;
 
 |Sistem|
-if (Email sudah terdaftar?) then (Sudah terdaftar)
-else (Belum terdaftar)
+if () then (Email belum terdaftar)
   :Meng-enable-kan tombol simpan;
 
   |Administrator|
@@ -35,8 +34,8 @@ else (Belum terdaftar)
   |Administrator|
   :Mengonfirmasi pembuatan akun khusus;
 
-  if (Konfirmasi popup) then (Batal)
-  else (Ok)
+  if () then (Konfirmasi batal)
+  else (Konfirmasi ok)
     |DBMS|
     :Menyimpan perubahan data akun khusus;
 
@@ -44,9 +43,11 @@ else (Belum terdaftar)
     :Menampilkan pesan berhasil;
     :Menampilkan menu detail akun khusus;
   endif
+else (Email sudah terdaftar)
+  |Sistem|
+  :Menampilkan pesan email sudah terdaftar;
 endif
 
-|Administrator|
 stop
 
 @enduml

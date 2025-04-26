@@ -25,8 +25,8 @@ start
 |Pengguna|
 :Mengonfirmasi laporan;
 
-if (Konfirmasi laporan) then (Batal)
-else (Ok)
+if () then (Konfirmasi batal)
+else (Konfirmasi Ok)
   |DBMS|
   :Menyimpan laporan;
 

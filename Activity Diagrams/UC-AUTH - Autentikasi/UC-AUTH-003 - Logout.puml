@@ -11,12 +11,12 @@ start
 :Menampilkan popup konfirmasi;
 
 |Pengguna|
-if (Konfirmasi popup) then (Ok)
+if () then (Konfirmasi ok)
   |Sistem|
-  :Menghapus Pengguna session;
+  :Menghapus session pengguna;
   :Menampilkan pesan berhasil;
   :Menampilkan halaman peta bencana;
-else (Batal)
+else (Konfirmasi batal)
 endif 
 
 |Pengguna|

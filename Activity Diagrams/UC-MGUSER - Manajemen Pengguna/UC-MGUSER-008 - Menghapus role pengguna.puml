@@ -31,8 +31,8 @@ start
 |Administrator|
 :Mengonfirmasi perubahan role;
 
-if (Konfirmasi popup) then (Batal)
-else (Ok)
+if () then (Konfirmasi batal)
+else (Konfirmasi Ok)
   |DBMS|
   :Menghapus role dari anggota yang sebelumnya termasuk;
   :Menghapus role;

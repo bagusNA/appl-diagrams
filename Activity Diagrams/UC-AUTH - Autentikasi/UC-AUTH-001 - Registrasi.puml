@@ -20,8 +20,8 @@ if () then (Email)
   :Mencari apakah sudah terdaftar atau belum;
 
   |Sistem|
-  if (Email terdaftar?) then (Tidak)
-    :Tampilkan pesan email sudah terdaftar;
+  if () then (Email tidak terdaftar)
+    :Tampilkan warna accent success pada input email;
 
     |Pengguna|
     :Mengklik tombol daftar;
@@ -30,21 +30,21 @@ if () then (Email)
     :Menampilkan popup konfirmasi;
 
     |Pengguna|
-    if (Konfirmasi popup) then (Ok)
+    if () then (Konfirmasi ok)
       |DBMS|
       :Menyimpan data registrasi;
 
       |Sistem|
       :Menampilkan pesan berhasil;
       :Menampilkan halaman peta bencana;
-    else (Batal)
+    else (Konfirmasi batal)
     endif
-  else (Ya)
-    :Tampilkan warna accent success pada input email;
+  else (Email terdaftar)
+    :Tampilkan pesan email sudah terdaftar;
   endif
 else (OAuth)
   |OAuth Provider|
-  :Menerima data pengguna dari provider;
+  :Menerima data pengguna dari provider OAuth;
 endif 
 
 |Pengguna|

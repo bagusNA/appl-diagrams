@@ -31,19 +31,19 @@ start
 |Administrator & Perwakilan BPBD|
 :Mengonfirmasi pengisian data bulk bencana alam;
 
-if (Konfirmasi popup) then (Batal)
-else (Ok)
+if () then (Konfirmasi batal)
+else (Konfirmasi Ok)
   |Sistem|
   :Mencari kesalahan pengisian data pada data bulk;
 
-  if (Ada kesalahan pengisian?) then (Ada)
-  else (Tidak Ada)
+  if () then (Ada kesalahan pengisian)
+  else (Tidak ada kesalahan pengisian)
     |DBMS|
     :Menyimpan data bencana alam;
 
-    if (Ada media unggahan?) then (Tidak ada)
-    else (Ada)
-      |Storage Bucket|
+    |Storage Bucket|
+    if () then (Tidak ada unggahan)
+    else (Ada unggahan)
       :Menyimpan media unggahan;
     endif
 

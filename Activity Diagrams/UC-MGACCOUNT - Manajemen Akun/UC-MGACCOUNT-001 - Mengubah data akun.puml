@@ -23,14 +23,14 @@ title Mengubah data akun
 |Pengguna|
 :Mengonfirmasi perubahan data;
 
-if (Konfirmasi popup) then (Batal)
-else (Ok)
+if () then (Konfirmasi batal)
+else (Konfirmasi Ok)
   |DBMS|
   :Menyimpan perubahan data akun;
 
-  if (Mengunggah foto profil?) then (Tidak)
-  else (Ya)
-    |Storage Bucket|
+  |Storage Bucket|
+  if () then (Tidak ada unggahan foto profil)
+  else (Ada unggahan foto profil)
     :Menyimpan foto profil;
   endif
 

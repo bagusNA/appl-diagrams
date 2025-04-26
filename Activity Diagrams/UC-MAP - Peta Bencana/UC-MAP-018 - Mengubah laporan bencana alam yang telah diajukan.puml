@@ -21,14 +21,14 @@ start
 |Pengguna|
 :Mengonfirmasi popup;
 
-if (Konfirmasi popup) then (Batal)
-else (Ok)
+if () then (Konfirmasi batal)
+else (Konfirmasi Ok)
   |DBMS|
   :Menyimpan perubahan laporan;
 
-  if (Ada media unggahan?) then (Tidak ada)
-  else (Ada)
-    |Storage Bucket|
+  |Storage Bucket|
+  if () then (Tidak ada unggahan)
+  else (Ada unggahan)
     :Menyimpan media unggahan;
   endif
 

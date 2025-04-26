@@ -20,8 +20,8 @@ start
 |Administrator|
 :Mengonfirmasi penonaktifan pengguna;
 
-if (Konfirmasi popup) then (Batal)
-else (Ok)
+if () then (Konfirmasi batal)
+else (Konfirmasi Ok)
   |DBMS|
   :Menyimpan penonaktifan pengguna;
 

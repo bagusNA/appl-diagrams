@@ -16,11 +16,11 @@ start
 
 |Sistem|
 :Mengecek hasil hash kredensial;
-if (Kredensial benar?) then (Ya)
-  :Menyimpan Pengguna session;
+if () then (Kredensial benar)
+  :Menyimpan session pengguna;
   :Menampilkan pesan berhasil;
   :Menampilkan halaman peta bencana;
-else (Tidak)
+else (Kredensial salah)
   :Tampilkan pesan login gagal;
 endif 
 

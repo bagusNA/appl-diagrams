@@ -26,13 +26,13 @@ start
 |Administrator & Perwakilan BPBD|
 :Mengonfirmasi pembuatan data bencana alam;
 
-if (Konfirmasi popup) then (Batal)
-else (Ok)
+if () then (Konfirmasi batal)
+else (Konfirmasi Ok)
   |DBMS|
   :Menyimpan data bencana alam;
 
-  if (Ada media unggahan?) then (Tidak ada)
-  else (Ada)
+  if () then (Tidak ada unggahan)
+  else (Ada unggahan)
     |Storage Bucket|
     :Menyimpan media unggahan;
   endif

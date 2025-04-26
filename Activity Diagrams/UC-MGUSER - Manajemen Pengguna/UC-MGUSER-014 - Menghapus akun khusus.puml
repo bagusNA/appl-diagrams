@@ -31,8 +31,8 @@ start
 |Administrator|
 :Mengonfirmasi penghapusan akun;
 
-if (Konfirmasi popup) then (Batal)
-else (Ok)
+if () then (Konfirmasi batal)
+else (Konfirmasi Ok)
   |DBMS|
   :Menghapus akun;
 

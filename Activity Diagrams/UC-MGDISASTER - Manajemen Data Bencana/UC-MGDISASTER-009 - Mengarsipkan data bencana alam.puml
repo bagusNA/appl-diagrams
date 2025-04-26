@@ -24,8 +24,8 @@ start
 |Administrator & Perwakilan BPBD|
 :Mengonfirmasi pengarsipan data bencana alam;
 
-if (Konfirmasi popup) then (Batal)
-else (Ok)
+if () then (Konfirmasi batal)
+else (Konfirmasi Ok)
   |DBMS|
   :Menyimpan pengarsipan data bencana alam;
 

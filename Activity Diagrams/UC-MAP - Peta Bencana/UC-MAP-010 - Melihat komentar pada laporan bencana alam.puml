@@ -16,9 +16,9 @@ start
 |Sistem|
 :Menampilkan komentar dari laporan bencana alam;
 
-if (Ada komentar?) then (Tidak)
+if () then (Tidak ada komentar)
   :Menampilkan pesan tidak ada komentar;
-else (Ya)
+else (Ada komentar)
 endif
 
 stop
