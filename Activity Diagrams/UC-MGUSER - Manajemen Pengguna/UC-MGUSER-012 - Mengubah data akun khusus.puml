@@ -5,14 +5,10 @@ title Mengubah data akun khusus
 
 |Administrator|
 start
-:Memilih menu daftar akun khusus;
-:Memilih filter dan sort;
+:Memilih menu edit pada akun khusus yang dipilih;
 
-|Sistem|
-:Menampilkan menu daftar akun khusus;
-
-|Administrator|
-:Memilih tombol edit pada akun khusus yang dipilih;
+|DBMS|
+:Mengambil data detail akun khusus;
 
 |Sistem|
 :Menampilkan menu edit akun khusus;
@@ -20,37 +16,38 @@ start
 |Administrator|
 :Mengisi data akun khusus;
 
-|DBMS|
-:Mencari apakah email sudah terdaftar atau belum;
-
 |Sistem|
-if () then (Email belum terdaftar)
-  :Meng-enable-kan tombol simpan;
+:Memvalidasi data akun;
 
-  |Administrator|
-  :Mengklik tombol simpan;
-  
+if () then (Data tidak valid)
+  :Menampilkan pesan error validasi;
+else (Data valid)
+  |DBMS|
+  :Mencari apakah email sudah terdaftar atau belum;
+
   |Sistem|
-  :Menampilkan popup konfirmasi;
+  if () then (Email belum terdaftar)
+    :Menampilkan popup konfirmasi;
 
-  |Administrator|
-  :Mengonfirmasi pembuatan akun khusus;
+    |Administrator|
+    :Mengonfirmasi pembuatan akun khusus;
 
-  if () then (Konfirmasi batal)
-  else (Konfirmasi ok)
-    |DBMS|
-    :Menyimpan perubahan data akun khusus;
+    if () then (Konfirmasi batal)
+    else (Konfirmasi ok)
+      |DBMS|
+      :Menyimpan perubahan data akun khusus;
 
+      |Sistem|
+      fork
+        :Menampilkan pesan berhasil;
+      fork again
+        :Menampilkan menu detail akun khusus;
+      endfork
+    endif
+  else (Email sudah terdaftar)
     |Sistem|
-    fork
-      :Menampilkan pesan berhasil;
-    fork again
-      :Menampilkan menu detail akun khusus;
-    endfork
+    :Menampilkan pesan email sudah terdaftar;
   endif
-else (Email sudah terdaftar)
-  |Sistem|
-  :Menampilkan pesan email sudah terdaftar;
 endif
 
 stop

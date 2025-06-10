@@ -8,23 +8,32 @@ start
 :Mengklik tombol cari lokasi / precise location;
 
 |Browser Geolocation API|
-:Mencari lokasi pengguna dengan geolocation;
+:Meminta permission penggunaan geolocation;
 
-|Sistem|
-switch ()
-case (Ditemukan)
-  fork
-    :Menampilkan data bencana alam sesuai lokasi pengguna;
-  fork again
+if () then (Mendapat permission)
+  :Mencari lokasi pengguna dengan geolocation;
+
+  |Sistem|
+  if () then (Lokasi tidak tersedia)
+    :Tampilkan pesan layanan lokasi tidak tersedia;
+  else (Lokasi ditemukan)
+    |DBMS|
+    :Mengambil data bencana alam sesuai lokasi;
+
+    fork
+      :Menampilkan pin-pin titik bencana alam sesuai lokasi pengguna;
+    fork again
+      :Menampilkan rekapitulasi data bencana alam;
+    endfork
+
+    |Map API|
     :Zoom in ke daerah lokasi pengguna;
-  fork again
-    :Menampilkan rekapitulasi data bencana alam;
-  endfork
-case (Tidak ditemukan)
-  :Tampilkan pesan lokasi tidak ditemukan;
-case (Di luar Indonesia)
-  :Tampilkan pesan lokasi berada di luar Indonesia;
-endswitch
+  endif
+else (Tidak mendapat permission)
+  |Sistem|
+  :Tampilkan pesan layanan lokasi tidak diizinkan pengguna;
+endif
+
 
 stop
 

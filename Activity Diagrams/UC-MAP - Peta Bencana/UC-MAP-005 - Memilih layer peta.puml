@@ -13,7 +13,7 @@ start
 |Pengguna|
 :Memilih layer peta yang ditampilkan;
 
-|Sistem|
+|Map API|
 :Menampilkan layer peta yang dipilih;
 
 stop

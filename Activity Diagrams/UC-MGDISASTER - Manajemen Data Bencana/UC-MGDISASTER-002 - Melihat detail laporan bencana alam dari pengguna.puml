@@ -8,11 +8,17 @@ start
 :Memilih menu daftar laporan bencana alam dari pengguna;
 :Memilih filter dan sort;
 
+|DBMS|
+:Mengambil data laporan-laporan bencana alam pengguna;
+
 |Sistem|
 :Menampilkan menu daftar laporan bencana alam dari pengguna;
 
 |Administrator & Perwakilan BPBD|
 :Mengklik tombol detail pada laporan yang dipilih;
+
+|DBMS|
+:Mengambil data laporan bencana alam;
 
 |Sistem|
 :Menampilkan menu detail laporan bencana alam;

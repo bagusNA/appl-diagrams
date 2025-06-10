@@ -8,6 +8,9 @@ start
 :Memilih menu log aktivitas data bencana alam;
 :Memilih filter dan sort;
 
+|DBMS|
+:Mengambil data log aktivitas data bencana alam;
+
 |Sistem|
 :Menampilkan menu log aktivitas data bencana alam;
 

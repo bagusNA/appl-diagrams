@@ -7,6 +7,9 @@ title Melaporkan komentar lain
 start
 :Memilih menu komentar;
 
+|DBMS|
+:Mengambil data komentar-komentar;
+
 |Sistem|
 :Menampilkan komentar;
 
@@ -18,28 +21,33 @@ start
 
 |Pengguna|
 :Mengisi alasan laporan;
-:Mengklik tombol kirim;
 
 |Sistem|
-:Menampilkan konfirmasi;
+:Memvalidasi isi alasan laporan;
 
-|Pengguna|
-:Mengonfirmasi laporan;
+if () then (Alasan valid)
+  :Menampilkan konfirmasi;
 
-if () then (Konfirmasi batal)
-else (Konfirmasi Ok)
-  |DBMS|
-  :Menyimpan laporan;
+  |Pengguna|
+  :Mengonfirmasi laporan;
 
+  if () then (Konfirmasi batal)
+  else (Konfirmasi Ok)
+    |DBMS|
+    :Menyimpan laporan;
+
+    |Sistem|
+    fork
+      :Menampilkan pesan berhasil menyimpan laporan;
+    fork again
+      :Menampilkan daftar komentar;
+    endfork
+  endif
+else (Alasan tidak valid)
   |Sistem|
-  fork
-    :Menampilkan pesan berhasil menyimpan laporan;
-  fork again
-    :Menampilkan daftar komentar;
-  endfork
+  :Tampilkan pesan error validasi;
 endif
 
-|Pengguna|
 stop
 
 @enduml

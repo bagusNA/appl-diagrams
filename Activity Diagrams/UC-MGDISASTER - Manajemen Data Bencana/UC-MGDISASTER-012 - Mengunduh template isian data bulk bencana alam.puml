@@ -5,13 +5,6 @@ title Mengunduh template isian data bulk bencana alam
 
 |Administrator & Perwakilan BPBD|
 start
-:Memilih menu daftar data bencana alam;
-:Memilih filter dan sort;
-
-|Sistem|
-:Menampilkan menu daftar data bencana alam;
-
-|Administrator & Perwakilan BPBD|
 :Memilih menu tambah bulk data bencana alam;
 
 |Sistem|
@@ -19,6 +12,9 @@ start
 
 |Administrator & Perwakilan BPBD|
 :Mengunduh template isian;
+
+|Storage Bucket|
+:Mengambil url template file;
 
 |Sistem|
 :Mengirimkan template file sebagai unduhan;

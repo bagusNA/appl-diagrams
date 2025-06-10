@@ -7,8 +7,11 @@ title Melihat daftar laporan alam yang telah diajukan
 start
 :Memilih menu laporan bencana alam;
 
+|DBMS|
+:Mengambil data laporan-laporan bencana alam;
+
 |Sistem|
-:Menampilkan form laporan bencana alam;
+:Menampilkan laporan bencana alam;
 stop
 
 @enduml

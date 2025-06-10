@@ -5,13 +5,6 @@ title Menambahkan data bencana alam secara bulk
 
 |Administrator & Perwakilan BPBD|
 start
-:Memilih menu daftar data bencana alam;
-:Memilih filter dan sort;
-
-|Sistem|
-:Menampilkan menu daftar data bencana alam;
-
-|Administrator & Perwakilan BPBD|
 :Memilih menu tambah bulk data bencana alam;
 
 |Sistem|
@@ -19,6 +12,9 @@ start
 
 |Administrator & Perwakilan BPBD|
 :Mengunduh template isian;
+
+|Storage Bucket|
+:Mengambil url template file;
 
 |Sistem|
 :Mengirimkan template file sebagai unduhan;
@@ -39,6 +35,8 @@ else (Konfirmasi Ok)
   :Mencari kesalahan pengisian data pada data bulk;
 
   if () then (Ada kesalahan pengisian)
+    |Sistem|
+    :Menampilkan pesan error;
   else (Tidak ada kesalahan pengisian)
     |DBMS|
     :Menyimpan data bencana alam;

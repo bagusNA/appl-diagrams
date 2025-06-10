@@ -12,10 +12,18 @@ start
 
 |Pengguna|
 :Memilih tombol edit pada laporan yang telah dipilih;
-:Mengisi jenis dan deskripsi bencana alam;
+
+|DBMS|
+:Mengambil data laporan bencana alam;
 
 |Sistem|
-:Menampilkan peta dengan titik lokasi sementara (lokasi placeholder);
+:Menampilkan menu edit laporan bencana alam;
+
+|Map API|
+:Menampilkan titik laporan bencana alam;
+
+|Pengguna|
+:Mengisi jenis dan deskripsi bencana alam;
 
 |Pengguna|
 repeat:Memilih metode pengisian lokasi;
@@ -24,7 +32,7 @@ if () then (Lokasi manual)
   :Mengisi lokasi bencana alam;
  
 else (Lokasi otomatis)
-  |Geolocation Service|
+  |Browser Geolocation API|
   :Melakukan lookup/pencarian lokasi pengguna saat ini;
 endif
 
@@ -37,10 +45,7 @@ repeat while () is (Lokasi tidak ditemukan) not (Lokasi ditemukan)
 
 |Pengguna|
 :Menyesuaikan (menggeser) titik lokasi pada peta;
-
-|Pengguna|
 :Mengunggah media (foto atau video) terkait bencana alam;
-:Mengklik tombol laporkan;
 
 |Sistem|
 :Menampilkan popup konfirmasi;
@@ -50,21 +55,30 @@ repeat while () is (Lokasi tidak ditemukan) not (Lokasi ditemukan)
 
 if () then (Konfirmasi batal)
 else (Konfirmasi Ok)
-  |DBMS|
-  :Menyimpan perubahan laporan;
+  |Sistem|
+  :Memvalidasi data laporan;
 
-  |Storage Bucket|
-  if () then (Tidak ada unggahan)
-  else (Ada unggahan)
-    :Menyimpan media unggahan;
+  if () then (Data tidak valid)
+    |Sistem|
+    :Tampilkan pesan error validasi;
+  else (Data valid)
+    |DBMS|
+    :Menyimpan perubahan laporan;
+
+    |Storage Bucket|
+    if () then (Tidak ada unggahan)
+    else (Ada unggahan)
+      :Menyimpan media unggahan;
+    endif
+
+    |Sistem|
+    fork
+      :Menampilkan pesan berhasil;
+    fork again
+      :Menampilkan detail laporan yang telah dibuat;
+    endfork
   endif
 
-  |Sistem|
-  fork
-    :Menampilkan pesan berhasil;
-  fork again
-    :Menampilkan detail laporan yang telah dibuat;
-  endfork
 endif
 
 |Pengguna|

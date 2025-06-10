@@ -5,13 +5,6 @@ title Membuat role pengguna
 
 |Administrator|
 start
-:Memilih menu daftar role pengguna;
-:Memilih filter dan sort;
-
-|Sistem|
-:Menampilkan menu daftar role pengguna;
-
-|Administrator|
 :Memilih menu tambah role pengguna;
 
 |Sistem|
@@ -21,6 +14,9 @@ start
 :Mengisi isian nama role;
 :Memilih module (halaman) apa saja yang dapat diakses oleh role;
 :Mengklik tombol tambah anggota;
+
+|DBMS|
+:Mengambil data akun-akun khusus terdaftar;
 
 |Sistem|
 :Menampilkan popup berisi pilihan akun-akun khusus terdaftar;
@@ -37,16 +33,23 @@ start
 
 if () then (Konfirmasi batal)
 else (Konfirmasi Ok)
-  |DBMS|
-  :Menyimpan role baru;
-  :Menyimpan anggota-anggota dari role baru;
-
   |Sistem|
-  fork
-    :Menampilkan pesan berhasil;
-  fork again
-    :Menampilkan menu detail role pengguna;
-  endfork
+  :Memvalidasi data role dan anggota role;
+
+  if () then (Data tidak valid)
+    :Menampilkan pesan error validasi;
+  else (Data valid)
+    |DBMS|
+    :Menyimpan role baru;
+    :Menyimpan anggota-anggota dari role baru;
+
+    |Sistem|
+    fork
+      :Menampilkan pesan berhasil;
+    fork again
+      :Menampilkan menu detail role pengguna;
+    endfork
+  endif
 endif
 
 |Administrator|

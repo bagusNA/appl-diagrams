@@ -7,29 +7,39 @@ title Mengomentari pada bencana alam atau laporan bencana alam
 start
 :Memilih menu komentar;
 
+|DBMS|
+:Mengambil data komentar-komentar;
+
 |Sistem|
 :Menampilkan komentar;
 
 |Pengguna|
 :Menginputkan konten komentar;
 :Memilih media (gambar atau video) untuk dilampirkan;
-:Mengklik tombol unggah / komentar;
-
-|DBMS|
-:Menyimpan komentar;
-
-|Storage Bucket|
-if () then (Tidak ada unggahan)
-else (Ada unggahan)
-:Menyimpan media unggahan;
-endif
 
 |Sistem|
-fork
-  :Menampilkan pesan berhasil;
-fork again
-  :Menampilkan komentar yang telah dibuat;
-endfork
+:Memvalidasi data komentar;
+
+if () then (Data valid)
+  |DBMS|
+  :Menyimpan komentar;
+
+  |Storage Bucket|
+  if () then (Tidak ada unggahan)
+  else (Ada unggahan)
+    :Menyimpan media unggahan;
+  endif
+
+  |Sistem|
+  fork
+    :Menampilkan pesan berhasil;
+  fork again
+    :Menampilkan komentar yang telah dibuat;
+  endfork
+else (Data tidak valid)
+  |Sistem|
+  :Tampilkan pesan error validasi;
+endif
 
 stop
 

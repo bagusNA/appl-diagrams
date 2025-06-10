@@ -5,17 +5,10 @@ title Melihat komentar pada laporan bencana alam
  
 |Pengguna|
 start
-:Memilih laporan bencana alam pada peta;
+:Memilih menu komentar pada laporan bencana alam;
 
-|Sistem|
-fork
-  :Zoom in ke daerah sekitar laporan bencana alam;
-fork again
-  :Menampilkan detail laporan bencana alam;
-endfork
-
-|Pengguna|
-:Memilih menu komentar;
+|DBMS|
+:Mengambil komentar dari laporan bencana alam;
 
 |Sistem|
 if () then (Tidak ada komentar)

@@ -8,11 +8,17 @@ start
 :Memilih menu daftar data bencana alam;
 :Memilih filter dan sort;
 
+|DBMS|
+:Mengambil data-data bencana alam;
+
 |Sistem|
 :Menampilkan menu daftar data bencana alam;
 
 |Administrator & Perwakilan BPBD|
 :Mengklik tombol detail pada data bencana alam yang dipilih;
+
+|DBMS|
+:Mengambil data detail bencana alam;
 
 |Sistem|
 :Menampilkan menu detail data bencana alam;

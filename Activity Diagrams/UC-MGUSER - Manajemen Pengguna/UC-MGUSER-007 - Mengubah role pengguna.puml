@@ -5,14 +5,11 @@ title Mengubah role pengguna
 
 |Administrator|
 start
-:Memilih menu daftar role pengguna;
-:Memilih filter dan sort;
+:Memilih menu edit role pengguna;
 
-|Sistem|
-:Menampilkan menu daftar role pengguna;
-
-|Administrator|
-:Memilih tombol edit pada role pengguna;
+|DBMS|
+:Mengambil data role pengguna dan anggotanya;
+:Mengambil data akun-akun khusus terdaftar;
 
 |Sistem|
 :Menampilkan menu edit role pengguna;
@@ -38,16 +35,23 @@ start
 
 if () then (Konfirmasi batal)
 else (Konfirmasi Ok)
-  |DBMS|
-  :Menyimpan perubahan role;
-  :Menyimpan anggota-anggota dari role baru;
-
   |Sistem|
-  fork
-    :Menampilkan pesan berhasil;
-  fork again
-    :Menampilkan menu detail role pengguna;
-  endfork
+  :Memvalidasi data role dan anggota role;
+
+  if () then (Data tidak valid)
+    :Menampilkan pesan error validasi;
+  else (Data valid)
+    |DBMS|
+    :Menyimpan perubahan role;
+    :Menyimpan anggota-anggota dari role;
+
+    |Sistem|
+    fork
+      :Menampilkan pesan berhasil;
+    fork again
+      :Menampilkan menu detail role pengguna;
+    endfork
+  endif
 endif
 
 |Administrator|

@@ -5,14 +5,10 @@ title Menghapus data bencana alam
 
 |Administrator & Perwakilan BPBD|
 start
-:Memilih menu daftar data bencana alam;
-:Memilih filter dan sort;
-
-|Sistem|
-:Menampilkan menu daftar data bencana alam;
-
-|Administrator & Perwakilan BPBD|
 :Memilih menu detail data bencana alam;
+
+|DBMS|
+:Mengambil data bencana alam;
 
 |Sistem|
 :Menampilkan menu detail data bencana alam;

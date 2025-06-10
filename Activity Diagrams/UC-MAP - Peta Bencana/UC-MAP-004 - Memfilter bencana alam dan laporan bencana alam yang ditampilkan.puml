@@ -12,13 +12,15 @@ start
 
 |Pengguna|
 :Memilih filter yang digunakan;
-:Mengklik tombol filter;
+
+|DBMS|
+:Mengambil data bencana alam sesuai filter yang digunakan;
 
 |Sistem|
 if () then (Tidak ada bencana alam yang memenuhi)
   :Tampilkan pesan tidak ada bencana alam yang memenuhi kriteria;
 else (Ada bencana alam yang memenuhi)
-  :Menampilkan data bencana alam sesuai filter yang digunakan;
+  :Menampilkan data bencana alam;
 endif
 
 stop

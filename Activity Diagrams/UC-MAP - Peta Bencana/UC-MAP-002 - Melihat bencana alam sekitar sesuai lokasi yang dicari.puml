@@ -6,22 +6,40 @@ title Melihat bencana alam sekitar sesuai lokasi yang dicari
 |Pengguna|
 start
 :Mengklik input pencarian lokasi;
-:Menginputkan lokasi yang dicari;
 
-|Sistem|
-:Menampilkan rekomendasi lokasi;
+|Browser Geolocation API|
+:Meminta permission penggunaan geolocation;
+
+if () then (Mendapat permission)
+  :Mencari lokasi pengguna dengan geolocation;
+
+  if () then (Lokasi tidak ditemukan)
+  else (Lokasi ditemukan)
+    |DBMS|
+    :Mencari daerah di sekitar lokasi pengguna;
+
+    |Sistem|
+    :Menampilkan rekomendasi lokasi;
+  endif
+
+else (Tidak mendapat permission)
+endif
 
 |Pengguna|
-:Mengklik tombol cari atau Enter;
+:Menginputkan atau memilih lokasi yang dicari;
+
+|DBMS|
+:Mengambil data bencana alam & rekapitulasi di lokasi yang dipilih;
 
 |Sistem|
-  fork
-    :Menampilkan data bencana alam di sekitar lokasi yang dicari;
-  fork again
-    :Zoom in ke lokasi yang dicari;
-  fork again
-    :Menampilkan rekapitulasi data bencana alam;
-  endfork
+fork
+  :Menampilkan data bencana alam di sekitar lokasi yang dicari;
+fork again
+  :Menampilkan rekapitulasi data bencana alam;
+endfork
+
+|Map API|
+:Zoom in ke daerah lokasi pengguna;
 
 stop
 

@@ -5,14 +5,10 @@ title Menutup laporan bencana alam yang tidak valid
 
 |Administrator & Perwakilan BPBD|
 start
-:Memilih menu daftar laporan bencana alam dari pengguna;
-:Memilih filter dan sort;
+:Memilih menu detail laporan bencana alam;
 
-|Sistem|
-:Menampilkan menu daftar laporan bencana alam dari pengguna;
-
-|Administrator & Perwakilan BPBD|
-:Mengklik tombol detail pada laporan yang dipilih;
+|DBMS|
+:Mengambil data laporan bencana alam;
 
 |Sistem|
 :Menampilkan menu detail laporan bencana alam;
@@ -30,15 +26,22 @@ start
 
 if () then (Konfirmasi batal)
 else (Konfirmasi Ok)
-  |DBMS|
-  :Menyimpan penutupan laporan;
- 
   |Sistem|
-  fork
-    :Menampilkan pesan berhasil;
-  fork again
-    :Menampilkan menu daftar laporan bencana alam dari pengguna;
-  endfork
+  :Memvalidasi data alasan penutupan laporan;
+
+  if () then (Data tidak valid)
+    :Menampilkan pesan error validasi;
+  else (Data valid)
+    |DBMS|
+    :Menyimpan penutupan laporan;
+
+    |Sistem|
+    fork
+      :Menampilkan pesan berhasil;
+    fork again
+      :Menampilkan menu daftar laporan bencana alam dari pengguna;
+    endfork
+  endif
 endif
 
 |Administrator & Perwakilan BPBD|

@@ -5,21 +5,15 @@ title Menghapus role pengguna
 
 |Administrator|
 start
-:Memilih menu daftar role pengguna;
-:Memilih filter dan sort;
+:Memilih menu detail role pengguna;
+
+|DBMS|
+:Mengambil data role pengguna dan anggotanya;
+:Mengambil data akun-akun khusus terdaftar;
 
 |Sistem|
-:Menampilkan menu daftar role pengguna;
-
-|Administrator|
-:Memilih tombol detail pada role pengguna;
-
-|Sistem|
-fork
-  :Menampilkan menu detail role pengguna;
-fork again
-  :Menampilkan daftar pengguna yang memiliki role tersebut;
-endfork
+:Menampilkan menu detail role pengguna;
+:Menampilkan daftar pengguna yang memiliki role tersebut;
 
 |Administrator|
 :Mengklik tombol hapus;
@@ -34,20 +28,27 @@ endfork
 :Menampilkan konfirmasi;
 
 |Administrator|
-:Mengonfirmasi perubahan role;
+:Mengonfirmasi penghapusan role;
 
 if () then (Konfirmasi batal)
 else (Konfirmasi Ok)
-  |DBMS|
-  :Menghapus role dari anggota yang sebelumnya termasuk;
-  :Menghapus role;
-
   |Sistem|
-  fork
-  :Menampilkan pesan berhasil;
-  fork again
-  :Menampilkan menu daftar role pengguna;
-  endfork
+  :Memvalidasi alasan penghapusan role;
+
+  if () then (Data alasan tidak valid)
+    :Menampilkan pesan error validasi;
+  else (Data alasan valid)
+    |DBMS|
+    :Menghapus role dari anggota yang sebelumnya termasuk;
+    :Menghapus role;
+
+    |Sistem|
+    fork
+      :Menampilkan pesan berhasil;
+    fork again
+      :Menampilkan menu daftar role pengguna;
+    endfork
+  endif
 endif
 
 |Administrator|

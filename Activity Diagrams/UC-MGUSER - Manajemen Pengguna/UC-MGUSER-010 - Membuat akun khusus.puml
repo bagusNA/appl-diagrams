@@ -5,13 +5,6 @@ title Membuat daftar akun khusus
 
 |Administrator|
 start
-:Memilih menu daftar akun khusus;
-:Memilih filter dan sort;
-
-|Sistem|
-:Menampilkan menu daftar akun khusus;
-
-|Administrator|
 :Memilih menu tambah akun;
 
 |Sistem|
@@ -20,37 +13,41 @@ start
 |Administrator|
 :Mengisi data akun khusus;
 
-|DBMS|
-:Mencari apakah email sudah terdaftar atau belum;
-
 |Sistem|
-if () then (Email belum terdaftar)
+:Memvalidasi data akun;
+
+if () then (Data tidak valid)
+  :Menampilkan pesan error validasi;
+else (Data valid)
+  |DBMS|
+  :Mencari apakah email sudah terdaftar atau belum;
+
   |Sistem|
-  :Meng-enable-kan tombol simpan;
-
-  |Administrator|
-  :Mengklik tombol simpan;
-  
-  |Sistem|
-  :Menampilkan popup konfirmasi;
-
-  |Administrator|
-  :Mengonfirmasi pembuatan akun khusus;
-
-  if () then (Konfirmasi batal)
-  else (Konfirmasi ok)
-    |DBMS|
-    :Menyimpan akun baru;
-
+  if () then (Email belum terdaftar)
+    |Administrator|
+    :Mengklik tombol simpan;
+    
     |Sistem|
-    fork
-      :Menampilkan pesan berhasil;
-    fork again
-      :Menampilkan menu daftar akun khusus;
-    endfork
+    :Menampilkan popup konfirmasi;
+
+    |Administrator|
+    :Mengonfirmasi pembuatan akun khusus;
+
+    if () then (Konfirmasi batal)
+    else (Konfirmasi ok)
+      |DBMS|
+      :Menyimpan akun baru;
+
+      |Sistem|
+      fork
+        :Menampilkan pesan berhasil;
+      fork again
+        :Menampilkan menu daftar akun khusus;
+      endfork
+    endif
+  else (Email sudah terdaftar)
+    :Menampilkan pesan email sudah terdaftar;
   endif
-else (Email sudah terdaftar)
-  :Menampilkan pesan email sudah terdaftar;
 endif
 
 stop

@@ -8,11 +8,17 @@ start
 :Memilih menu daftar role pengguna;
 :Memilih filter dan sort;
 
+|DBMS|
+:Mengambil data role-role pengguna;
+
 |Sistem|
 :Menampilkan menu daftar role pengguna;
 
 |Administrator|
 :Memilih tombol detail pada role pengguna yang dipilih;
+
+|DBMS|
+:Mengambil data detail role pengguna;
 
 |Sistem|
 fork

@@ -14,47 +14,43 @@ start
 :Memilih metode registrasi;
 
 if () then (Email)
-  :Mengisi data registrasi;
-
-  |DBMS|
-  :Mencari apakah email sudah terdaftar atau belum;
-
-  |Sistem|
-  if () then (Email tidak terdaftar)
-    fork
-      :Tampilkan warna accent success pada input email;
-    fork again
-      :Meng-enable-kan tombol daftar;
-    end fork
-
-    |Pengguna|
-    :Mengklik tombol daftar;
-  else (Email terdaftar)
-  |Sistem|
-    :Tampilkan pesan email sudah terdaftar;
-  endif
 else (OAuth)
+  |Sistem|
+  :Menampilkan laman OAuth;
+endif
+
+|Pengguna|
+:Mengisi data registrasi;
+
+if () then (Registrasi dengan email)
+else (Registrasi dengan OAuth)
   |OAuth Provider|
+  :Menjalankan callback URL OAuth dari sistem;
+
+  |Sistem|
   :Menerima data pengguna dari provider OAuth;
 endif 
 
-    |Sistem|
-    :Menampilkan popup konfirmasi;
+|DBMS|
+:Mencari apakah email sudah terdaftar atau belum;
 
-    |Pengguna|
-    :Mengonfirmasi data pendaftaran;
-    if () then (Konfirmasi ok)
-      |DBMS|
-      :Menyimpan data registrasi;
+|Sistem|
+if () then (Email terdaftar)
+  |Sistem|
+  :Tampilkan pesan email sudah terdaftar;
+else (Email tidak terdaftar)
+  |DBMS|
+  :Menyimpan data registrasi;
 
-      |Sistem|
-      fork
-        :Menampilkan pesan berhasil;
-      fork again
-        :Menampilkan halaman peta bencana;
-      end fork
-    else (Konfirmasi batal)
-    endif
+  |Sistem|
+  :Menyimpan session pengguna;
+
+  fork
+    :Menampilkan pesan berhasil;
+  fork again
+    :Menampilkan halaman peta bencana;
+  end fork
+endif
 
 |Pengguna|
 stop

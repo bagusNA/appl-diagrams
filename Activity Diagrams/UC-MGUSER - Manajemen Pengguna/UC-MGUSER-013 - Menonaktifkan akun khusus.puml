@@ -5,14 +5,10 @@ title Menonaktifkan akun khusus
 
 |Administrator|
 start
-:Memilih menu daftar akun khusus;
-:Memilih filter dan sort;
+:Memilih menu detail pada akun khusus yang dipilih;
 
-|Sistem|
-:Menampilkan menu daftar akun khusus;
-
-|Administrator|
-:Memilih tombol detail pada akun khusus yang dipilih;
+|DBMS|
+:Mengambil data detail akun khusus;
 
 |Sistem|
 :Menampilkan menu detail akun khusus;
@@ -25,7 +21,6 @@ start
 
 |Administrator|
 :Mengisi alasan penonaktifan;
-:Mengklik tombol nonaktifkan pada popup;
 
 |Sistem|
 :Menampilkan konfirmasi;
@@ -35,15 +30,20 @@ start
 
 if () then (Konfirmasi batal)
 else (Konfirmasi Ok)
-  |DBMS|
-  :Menyimpan penonaktifan akun;
+  if () then (Data alasan tidak valid)
+    |Sistem|
+    :Menampilkan pesan error validasi;
+  else (Data alasan valid)
+    |DBMS|
+    :Menyimpan penonaktifan akun;
 
-  |Sistem|
-  fork
-    :Menampilkan pesan berhasil;
-  fork again
-    :Menampilkan menu detail akun khusus;
-  endfork
+    |Sistem|
+    fork
+      :Menampilkan pesan berhasil;
+    fork again
+      :Menampilkan menu detail akun khusus;
+    endfork
+  endif
 endif
 
 |Administrator|

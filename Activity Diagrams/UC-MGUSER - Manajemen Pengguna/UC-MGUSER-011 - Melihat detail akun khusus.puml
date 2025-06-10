@@ -5,14 +5,10 @@ title Melihat detail akun khusus (Administrator / Perwakilan BPBD)
 
 |Administrator|
 start
-:Memilih menu daftar akun khusus;
-:Memilih filter dan sort;
+:Memilih menu detail akun khusus;
 
-|Sistem|
-:Menampilkan menu daftar akun khusus;
-
-|Administrator|
-:Mengklik tombol detail pada akun yang dipilih;
+|DBMS|
+:Mengambil data akun khusus & log aktivitasnya;
 
 |Sistem|
 :Menampilkan menu detail akun khusus;

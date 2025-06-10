@@ -7,6 +7,9 @@ title Mengubah komentar yang dibuat
 start
 :Memilih menu komentar;
 
+|DBMS|
+:Mengambil data komentar-komentar;
+
 |Sistem|
 :Menampilkan komentar;
 
@@ -14,23 +17,30 @@ start
 :Memilih menu edit pada komentar yang telah dibuat;
 :Menginputkan konten komentar;
 :Memilih media (gambar atau video) untuk dilampirkan;
-:Mengklik tombol unggah / komentar;
-
-|DBMS|
-:Menyimpan komentar;
-
-|Storage Bucket|
-if () then (Tidak ada unggahan)
-else (Ada unggahan)
-:Menyimpan media unggahan;
-endif
 
 |Sistem|
-fork
-  :Menampilkan pesan berhasil diubah;
-fork again
-  :Menampilkan komentar yang telah diubah;
-endfork
+:Memvalidasi data komentar;
+
+if () then (Data valid)
+  |DBMS|
+  :Menyimpan komentar;
+
+  |Storage Bucket|
+  if () then (Tidak ada unggahan)
+  else (Ada unggahan)
+  :Menyimpan media unggahan;
+  endif
+
+  |Sistem|
+  fork
+    :Menampilkan pesan berhasil diubah;
+  fork again
+    :Menampilkan komentar yang telah diubah;
+  endfork
+else (Data tidak valid)
+  |Sistem|
+  :Tampilkan pesan error validasi;
+endif
 
 stop
 

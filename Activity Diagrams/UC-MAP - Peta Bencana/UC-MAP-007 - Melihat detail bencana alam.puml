@@ -7,12 +7,14 @@ title Melihat detail bencana alam
 start
 :Memilih bencana alam pada peta;
 
+|DBMS|
+:Mengambil data detail bencana alam;
+
+|Map API|
+:Zoom in ke daerah sekitar bencana alam;
+
 |Sistem|
-fork
-  :Zoom in ke daerah sekitar bencana alam;
-fork again
-  :Menampilkan detail bencana alam;
-endfork
+:Menampilkan detail bencana alam;
 
 stop
 

@@ -6,6 +6,9 @@ title Mengubah data akun
 |Pengguna|
 :Memilih menu edit akun;
 
+|DBMS|
+:Mengambil data akun;
+
 |Sistem|
 :Menampilkan menu edit;
 
@@ -27,21 +30,29 @@ title Mengubah data akun
 
 if () then (Konfirmasi batal)
 else (Konfirmasi Ok)
-  |DBMS|
-  :Menyimpan perubahan data akun;
-
-  |Storage Bucket|
-  if () then (Tidak ada unggahan foto profil)
-  else (Ada unggahan foto profil)
-    :Menyimpan foto profil;
-  endif
-
   |Sistem|
-  fork
-    :Menampilkan pesan berhasil;
-  fork again
-    :Menampilkan menu edit akun;
-  endfork
+  :Memvalidasi data akun;
+
+  if () then (Data tidak valid)
+    |Sistem|
+    :Menampilkan pesan error validasi;
+  else (Data valid)
+    |DBMS|
+    :Menyimpan perubahan data akun;
+
+    |Storage Bucket|
+    if () then (Tidak ada unggahan foto profil)
+    else (Ada unggahan foto profil)
+      :Menyimpan foto profil;
+    endif
+
+    |Sistem|
+    fork
+      :Menampilkan pesan berhasil;
+    fork again
+      :Menampilkan menu edit akun;
+    endfork
+  endif
 endif
 
 |Pengguna|

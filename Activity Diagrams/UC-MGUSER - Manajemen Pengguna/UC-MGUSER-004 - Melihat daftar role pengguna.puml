@@ -8,6 +8,9 @@ start
 :Memilih menu daftar role pengguna;
 :Memilih filter dan sort;
 
+|DBMS|
+:Mengambil data role-role pengguna;
+
 |Sistem|
 :Menampilkan menu daftar role pengguna;
 

@@ -6,6 +6,9 @@ title Menghapus akun
 |Pengguna|
 :Memilih menu edit akun;
 
+|DBMS|
+:Mengambil data akun;
+
 |Sistem|
 :Menampilkan menu edit;
 
@@ -28,18 +31,28 @@ title Menghapus akun
 
 if () then (Konfirmasi batal)
 else (Konfirmasi Ok)
-  |DBMS|
-  :Menghapus akun;
-
   |Sistem|
-  fork
-    :Menampilkan pesan berhasil;
-  fork again
-    :Menampilkan peta bencana;
-  endfork
+  :Meng-hash data password;
+
+  |DBMS|
+  :Mengecek kebenaran password;
+
+  if () then (Password benar)
+    |DBMS|
+    :Menghapus akun;
+
+    |Sistem|
+    fork
+      :Menampilkan pesan berhasil;
+    fork again
+      :Menampilkan peta bencana;
+    endfork
+  else (Password salah)
+    |Sistem|
+    :Menampilkan pesan password salah;
+  endif
 endif
 
-|Pengguna|
 stop
 
 @enduml

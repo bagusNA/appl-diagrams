@@ -7,6 +7,9 @@ title Menghapus komentar yang dibuat
 start
 :Memilih menu komentar;
 
+|DBMS|
+:Mengambil data komentar-komentar;
+
 |Sistem|
 :Menampilkan komentar;
 

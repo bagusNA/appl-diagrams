@@ -7,6 +7,9 @@ title Melaporkan laporan bencana alam yang diunggah pengguna lain
 start
 :Memilih laporan bencana alam pada peta;
 
+|DBMS|
+:Mengambil data laporan bencana alam;
+
 |Sistem|
 :Menampilkan menu detail laporan bencana alam;
 
@@ -23,15 +26,24 @@ start
 
 if () then (Konfirmasi batal)
 else (Konfirmasi Ok)
-  |DBMS|
-  :Menyimpan laporan;
-  
   |Sistem|
-  fork
-    :Menampilkan pesan berhasil;
-  fork again
-    :Menampilkan detail laporan bencana alam yang telah dilaporkan;
-  endfork
+  :Memvalidasi alasan laporan;
+
+  if () then (Alasan tidak valid)
+    |Sistem|
+    :Menampilkan pesan error validasi;
+  else (Alasan valid)
+    |DBMS|
+    :Menyimpan laporan;
+    
+    |Sistem|
+    fork
+      :Menampilkan pesan berhasil;
+    fork again
+      :Menampilkan detail laporan bencana alam yang telah dilaporkan;
+    endfork
+  endif
+
 endif
 
 |Pengguna|

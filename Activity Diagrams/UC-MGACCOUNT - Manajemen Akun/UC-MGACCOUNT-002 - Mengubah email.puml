@@ -5,6 +5,9 @@ title Mengubah email
 |Pengguna|
 :Memilih menu edit akun;
 
+|DBMS|
+:Mengambil data akun;
+
 |Sistem|
 :Menampilkan menu edit;
 
@@ -22,17 +25,15 @@ title Mengubah email
 
 |Sistem|
 if () then (Email belum terdaftar)
-  :Meng-enable-kan tombol lanjut;
-
-  |Pengguna|
-  :Mengklik tombol lanjut;
-
   |Email Service|
   :Mengirim kode OTP ke alamat email akun;
 
   |Sistem|
-  :Menampilkan pesan Kode OTP telah dikirimkan;
-  :Menampilkan menu kode OTP;
+  fork
+    :Menampilkan pesan Kode OTP telah dikirimkan;
+  fork again
+    :Menampilkan menu kode OTP;
+  endfork
 
   |Pengguna|
   :Mengisi kode OTP;

@@ -8,6 +8,9 @@ start
 :Memilih menu data bencana alam;
 :Memilih filter dan sort;
 
+|DBMS|
+:Mengambil data-data bencana alam;
+
 |Sistem|
 :Menampilkan menu data laporan bencana alam;
 

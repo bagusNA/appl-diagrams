@@ -13,31 +13,39 @@ start
 |Pengguna|
 :Memilih metode login;
 
+|Sistem|
 if () then (Email)
-  :Mengisi data akun;
-  :Mengklik tombol login;
+  |Pengguna|
+  :Mengisi kredensial akun (email dan password);
 
   |Sistem|
-  :Mengecek kredensial akun;
+  :Meng-hash password yang diterima;
+
+  |DBMS|
+  :Mengecek & membandingkan kredensial akun;
 else (OAuth)
+  |Sistem|
+  :Menampilkan laman login OAuth;
+
   |OAuth Provider|
   :Menerima data pengguna dari provider OAuth;
 endif
 
 |Sistem|
 switch ()
+case (Kredensial salah)
+  :Tampilkan pesan login gagal;
+case (Belum terdaftar)
+  :Tampilkan pesan akun tidak terdaftar;
 case (Kredensial benar)
   :Menyimpan session pengguna;
 
+  |Sistem|
   fork
     :Menampilkan pesan berhasil;
   fork again
     :Menampilkan halaman peta bencana;
   endfork
-case (Kredensial salah)
-  :Tampilkan pesan login gagal;
-case (Belum terdaftar)
-  :Tampilkan pesan akun tidak terdaftar;
 endswitch
 
 stop

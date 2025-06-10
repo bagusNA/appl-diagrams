@@ -5,14 +5,10 @@ title Mengubah data bencana alam
 
 |Administrator & Perwakilan BPBD|
 start
-:Memilih menu daftar data bencana alam;
-:Memilih filter dan sort;
-
-|Sistem|
-:Menampilkan menu daftar data bencana alam;
-
-|Administrator & Perwakilan BPBD|
 :Memilih menu edit data bencana alam;
+
+|DBMS|
+:Mengambil data bencana alam;
 
 |Sistem|
 :Menampilkan menu edit data bencana alam;
@@ -30,21 +26,28 @@ start
 
 if () then (Konfirmasi batal)
 else (Konfirmasi Ok)
-  |DBMS|
-  :Menyimpan perubahan data bencana alam;
-
-  if () then (Tidak ada unggahan)
-  else (Ada unggahan)
-    |Storage Bucket|
-    :Menyimpan media unggahan;
-  endif
-
   |Sistem|
-  fork
-    :Menampilkan pesan berhasil;
-  fork again
-    :Menampilkan menu detail data bencana alam yang telah diubah;
-  endfork
+  :Memvalidasi data bencana alam;
+
+  if () then (Data tidak valid)
+    :Menampilkan pesan error validasi;
+  else (Data valid)
+    |DBMS|
+    :Menyimpan perubahan data bencana alam;
+
+    if () then (Tidak ada unggahan)
+    else (Ada unggahan)
+      |Storage Bucket|
+      :Menyimpan media unggahan;
+    endif
+
+    |Sistem|
+    fork
+      :Menampilkan pesan berhasil;
+    fork again
+      :Menampilkan menu detail data bencana alam yang telah diubah;
+    endfork
+    endif
 endif
 
 |Administrator & Perwakilan BPBD|

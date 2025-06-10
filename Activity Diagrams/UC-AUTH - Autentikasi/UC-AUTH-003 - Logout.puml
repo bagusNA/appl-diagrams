@@ -15,6 +15,9 @@ if () then (Konfirmasi ok)
   |Sistem|
   :Menghapus session pengguna;
 
+  |DBMS|
+  :Menghapus token session pengguna;
+
   fork
     :Menampilkan pesan berhasil;
   fork again
