@@ -1,0 +1,38 @@
+@startuml SD-MAP-001 - Melihat peta bencana berdasarkan daerah yang dicari
+
+actor ":User" as user
+participant ":MapUI" as view
+participant ":LocationAPI" as locationApi
+participant ":MapController" as controller
+participant ":MapService" as mapService
+participant ":DisasterDataService" as disasterDataService
+participant ":DBMS" as db
+
+user -> view ++: Memilih input pencarian lokasi
+view -> view: showLocationSearchInput()
+
+== Pencarian lokasi ==
+
+user -> view: Mengisi alamat/daerah
+view -> controller ++: searchLocation(address)
+  controller -> mapService ++: geocodeAddress(address)
+    return locations
+  return locations
+
+view -> view: showPossibleLocationResults()
+user -> view: Memilih lokasi dari pilihan
+
+== Load peta & pin point bencana ==
+
+view -> controller ++: getMap(location)
+  controller -> mapService ++: getMapByLocation(location)
+    return mapLayerUrl
+  
+  controller -> disasterDataService ++: getDisasterDataByLocation(location)
+    disasterDataService -> db ++: Query disaster data by location
+      return disasterData
+    return disasterData
+  return mapLayerUrl, disasterData
+
+view -> view: loadMapLayer(mapLayerUrl)
+view -> view: showDisasterDataPinpoint(disasterData)

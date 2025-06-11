@@ -1,0 +1,30 @@
+@startuml SD-MAP-001 - Melihat peta bencana
+
+actor ":User" as user
+participant ":MapUI" as view
+participant ":LocationAPI" as locationApi
+participant ":MapController" as controller
+participant ":MapService" as mapService
+participant ":DisasterDataService" as disasterDataService
+participant ":DBMS" as db
+
+user -> view ++: Membuka peta bencana alam
+view -> view: showMap()
+
+view -> locationApi ++: getDeviceLocation()
+  return location
+
+== Load peta & pin point bencana ==
+
+view -> controller ++: getMap(location)
+  controller -> mapService ++: getMapByLocation(location)
+    return mapLayerUrl
+  
+  controller -> disasterDataService ++: getDisasterDataByLocation(location)
+    disasterDataService -> db ++: Query disaster data by location
+      return disasterData
+    return disasterData
+  return mapLayerUrl, disasterData
+
+view -> view: loadMapLayer(mapLayerUrl)
+view -> view: showDisasterDataPinpoint(disasterData)
