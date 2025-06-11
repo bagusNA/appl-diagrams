@@ -1,0 +1,31 @@
+@startuml SD-MAP-015 - Melaporkan komentar (laporan) bencana alam
+
+title Melaporkan komentar (laporan) bencana alam
+
+actor ":User" as user
+participant ":MapUI" as view
+participant ":MapController" as controller
+participant ":CommentReportFormValidator" as validator
+participant ":CommentService" as commentService
+participant ":DBMS" as db
+
+user -> view ++: Memilih menu laporkan komentar
+view -> view : showReportCommentPage()
+
+user -> view : Mengisi alasan pelaporan 
+view -> controller ++: createReport(commentId, reason)
+  controller -> validator ++: validate(commentId, reason)
+    return isValid, errorMessages
+
+  alt report invalid
+    controller --> view: errorMessages
+    view -> view: showErrorMessages()
+  else report valid
+    controller -> commentService ++: createCommentReport(commentId, reason)
+      commentService -> db ++: Insert comment report
+        return transactionStatus
+      return report 
+    return report, successMessage
+
+    view -> view: showSuccessMessage()
+  end
