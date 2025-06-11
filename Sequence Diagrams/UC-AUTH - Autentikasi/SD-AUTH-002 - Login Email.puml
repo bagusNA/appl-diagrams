@@ -1,0 +1,67 @@
+@startuml UC-AUTH-002 - Login dengan Email
+skinparam wrapWidth 140
+
+title Login dengan Email
+
+actor ":User" as user
+participant ":LoginUI" as view
+participant ":AuthController" as controller
+participant ":LoginFormValidator" as validator 
+participant ":AuthService" as service
+database ":DBMS" as db
+
+user -> view ++: Open login view
+view -> view: showLoginView()
+
+user -> view: Input login data (email, password)
+
+view -> controller ++: login(email, password)
+
+controller -> validator ++: validate(email, password)
+
+alt error on validation
+  validator --> controller: validationErrors
+  controller --> view: errorMessages
+  view -> view: showErrorMessages()
+
+else validation success
+  validator --> controller --: isValidated
+  controller -> service ++: checkIfUserExists(email)
+  service --> controller --: isUserExists
+
+  alt user doesn't exist
+    controller --> view: errorMessages
+
+    view -> view: showErrorMessages()
+
+  else user exists
+    controller -> service ++: authenticate(email, password)
+      service -> db ++: getUserByEmail(email)
+        return userModel
+      
+      service --> service ++: checkPasswordHash(userModel, password)
+        return isPasswordCorrect 
+
+      alt password hash doesn't match
+        service --> controller: credentialInvalidMessage
+        controller --> view: errorMessages
+        view -> view: showErrorMessages()
+      else password hash match
+
+      service -> service ++: getUserTokenByUserId(userId)
+        service -> db ++: selectToken()
+          return token
+
+        return token
+
+      return userModel, token
+
+    return userDTO, token
+
+    view -> view: setUserSession(userDTO, token)
+
+    view -> view: showSuccessMessage()
+  end
+end
+
+deactivate view

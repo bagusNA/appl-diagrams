@@ -1,0 +1,64 @@
+@startuml UC-AUTH-001 - Registrasi dengan Email
+skinparam wrapWidth 140
+
+title Registrasi dengan Email
+
+actor ":User" as user
+participant ":RegisterUI" as view
+participant ":AuthController" as controller
+participant ":RegistrationFormValidator" as validator 
+participant ":AuthService" as service
+database ":DBMS" as db
+
+user -> view ++: Open register view
+view -> view: showRegisterView()
+
+user -> view: Input registration data (email, password)
+
+view -> controller ++: register(email, password)
+
+controller -> validator ++: validate(email, password)
+
+alt error on validation
+  validator --> controller: validationErrors
+  controller --> view: errorMessages
+  view -> view: showErrorMessages()
+
+else validation success
+  return isValidated
+
+  controller -> service ++: checkIfUserExists(email)
+    return isUserExists
+
+  alt user exists
+    controller --> view: errorMessages
+    view -> view: showErrorMessages()
+
+  else user doesn't exists
+    controller -> service ++: createUser(email, password)
+    service -> service ++: hashPassword(password)
+    service --> service --: passwordHash
+
+    service -> db ++: insertUser()
+
+    db --> service --: transactionStatus
+
+    service -> service ++: createUserToken(user)
+
+    service -> db ++: insertToken()
+
+    db --> service --: transactionStatus
+
+    service --> service --: token
+
+    service --> controller --: userModel, token
+
+    controller --> view --: userDTO, token
+
+    view -> view: setUserSession(userDTO, token)
+
+    view -> view: showSuccessMessage()
+  end
+end
+
+deactivate view

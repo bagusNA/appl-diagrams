@@ -1,0 +1,78 @@
+@startuml UC-AUTH-001-01 - Register/Login OAuth
+skinparam wrapWidth 140
+
+title Register/Login OAuth
+
+actor ":User" as user
+participant ":RegisterUI" as view
+participant ":AuthController" as controller
+participant ":AuthService" as authService
+participant ":UserService" as userService
+participant "GoogleOAuthProvider:OAuthProvider" as oauth
+database ":DBMS" as db
+
+user -> view ++: Open login view
+view -> view: showLoginView()
+
+user -> view: Sign in using Google
+view -> controller ++: signInToOAuth()
+
+controller -> authService ++: requestOAuth()
+
+authService -> oauth ++: requestAuth(appId, callbackUrl)
+oauth --> authService: oauthUrl
+
+authService --> controller --: oauthUrl
+
+controller --> view: oauthUrl
+
+view -> view ++: openOAuthUrl(oauthUrl)
+user -> view: Authenticate Google account
+deactivate view
+
+opt user's OAuth authenticated
+  oauth -> controller: oauthCallback(url, oauthCode)
+  controller --> oauth
+  deactivate oauth
+
+  controller -> authService ++: createUserFromOAuth(oauthCode)
+    authService -> authService ++: createOAuthToken(oauthCode)
+      authService -> oauth ++: getOAuthToken(oauthCode)
+        return oauthToken
+      authService -> db ++: insertOAuthToken()
+        return transactionStatus
+      return oauthToken
+
+      authService -> oauth ++: getCurrentUserProfile(oauthToken)
+        return userProfileDTO
+      
+      authService -> userService ++: checkIsUserExistsByEmail(email)
+        userService -> db ++: selectExistsUser()
+          return isUserExists
+        return isUserExists
+
+      alt user exists
+        authService -> userService ++: getUserByEmail(email)
+          userService -> db ++: selectUser()
+            return userModel
+        return userModel
+      else user don't exist
+        authService -> userService ++: createUserFromUserProfileDTO(userCreateDTO)
+          userService -> db ++: insertUser()
+            return transactionStatus
+          return userModel
+      end
+
+      authService -> authService ++: createUserToken(userModel)
+        authService -> db ++: insertUserToken()
+          return transactionStatus
+        return token
+
+    return userModel, token
+
+  controller --> view --: userDTO, token
+
+  view -> view: setUserSession(userDTO, token)
+
+  view -> view: showSuccessMessage()
+end
