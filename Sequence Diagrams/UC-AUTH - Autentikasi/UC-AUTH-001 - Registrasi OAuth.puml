@@ -6,7 +6,8 @@ title Registrasi OAuth
 actor ":User" as user
 participant ":RegisterUI" as view
 participant ":AuthController" as controller
-participant ":AuthService" as service
+participant ":AuthService" as authService
+participant ":UserService" as userService
 participant "GoogleOAuthProvider:OAuthProvider" as oauth
 database ":DBMS" as db
 
@@ -16,12 +17,12 @@ view -> view: showRegisterView()
 user -> view: Register using Google
 view -> controller ++: registerOAuth()
 
-controller -> service ++: requestOAuth(user)
+controller -> authService ++: requestOAuth()
 
-service -> oauth ++: requestAuth(appId, callbackUrl)
-oauth --> service: oauthUrl
+authService -> oauth ++: requestAuth(appId, callbackUrl)
+oauth --> authService: oauthUrl
 
-service --> controller --: oauthUrl
+authService --> controller --: oauthUrl
 
 controller --> view: oauthUrl
 
@@ -34,12 +35,25 @@ opt user's OAuth authenticated
   controller --> oauth
   deactivate oauth
 
-  controller -> service ++: createOAuthToken(user, oauthCode)
-  service -> oauth ++: getToken(oauthCode)
-  oauth --> service --: token
-  service -> db ++: insertToken()
-  db --> service --: transactionStatus
-  service --> controller --: token
+  controller -> authService ++: createOAuthToken(oauthCode)
+  authService -> oauth ++: getToken(oauthCode)
+  oauth --> authService --: token
+  authService -> db ++: insertToken()
+  db --> authService --: transactionStatus
+  authService --> controller --: token
+
+  controller -> authService ++: getNewUserData(token)
+  authService -> oauth ++: getCurrentUserProfile(token)
+  oauth --> authService --: userProfileDTO
+
+  authService -> userService ++: createUser(userCreateDTO)
+
+  userService -> db ++: insertUser()
+  db --> userService --: transactionStatus
+  userService --> authService --: userModel
+  authService --> controller --: userModel
+
   controller --> view --: userDTO, token
+
   view -> view: setUserSession(userDTO, token)
 end

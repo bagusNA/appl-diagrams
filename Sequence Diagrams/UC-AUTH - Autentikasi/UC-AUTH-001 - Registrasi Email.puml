@@ -10,6 +10,8 @@ participant ":RegistrationFormValidator" as validator
 participant ":AuthService" as service
 database ":DBMS" as db
 
+activate user
+
 user -> view: Open register view
 activate view
 view -> view: showRegisterView()
