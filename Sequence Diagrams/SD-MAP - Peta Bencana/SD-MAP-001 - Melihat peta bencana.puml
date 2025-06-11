@@ -1,5 +1,7 @@
 @startuml SD-MAP-001 - Melihat peta bencana
 
+title Melihat peta bencana
+
 actor ":User" as user
 participant ":MapUI" as view
 participant ":LocationAPI" as locationApi

@@ -1,0 +1,45 @@
+@startuml SD-MAP-011 - Mengomentari (laporan) bencana alam
+
+title Mengomentari (laporan) bencana alam
+
+actor ":User" as user
+participant ":MapUI" as view
+participant ":MapController" as controller
+participant ":CommentFormValidator" as validator
+participant ":CommentService" as commentService
+participant ":StorageService" as storageService
+participant ":DBMS" as db
+
+user -> view ++: Memilih menu buat komentar
+view -> view : showAddCommentPage()
+
+user -> view : Mengisi komentar dan media (attachment)
+view -> controller ++: postComment(disasterId, comment, attachments)
+  controller -> validator ++: validate(comment, attachments)
+    return isValid, errorMessages
+
+  alt comment invalid
+    controller --> view: errorMessages
+    view -> view: showErrorMessages()
+  else comment valid
+    controller -> commentService ++: createDisasterComment(disasterId, comment)
+      commentService -> db ++: Insert disaster comment
+        return transactionStatus
+      
+      opt has attachments
+        loop for each attachments
+          commentService -> storageService ++: saveAttachment(attachment)
+            storageService -> storageService ++: saveFile(attachment)
+              return isSaved
+
+            storageService -> db ++: Insert file metadata
+              return transactionStatus
+            return isSuccess
+        end
+      end
+      return comment
+    return comment
+
+    view -> view: showSuccessMessage()
+    view -> view: showNewComment(comment)
+  end

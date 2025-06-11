@@ -1,5 +1,7 @@
 @startuml SD-MAP-007 - Melihat detail (laporan) bencana alam
 
+title Melihat detail (laporan) bencana alam
+
 actor ":User" as user
 participant ":MapUI" as view
 participant ":MapController" as controller
