@@ -1,0 +1,30 @@
+@startuml UC-AUTH-003 - Logout
+
+title Logout
+
+actor ":User" as user
+participant ":LogoutUI" as view
+participant ":AuthController" as controller
+participant ":AuthService" as service
+database ":DBMS" as db
+
+user -> view ++: Click logout button
+
+view -> controller ++: logout(token)
+  controller -> service ++: logout(token)
+    service -> db ++: deleteUserToken()
+      return transactionStatus
+    
+    alt user token don't exist & not deleted
+      service --> controller: isDeleted, userTokenInvalidMessage
+      controller --> view: errorMessage
+      view -> view: showErrorMessage()
+    else user token exists & deleted
+      return isDeleted, successMessage
+
+      return successMessage
+      view -> view: clearUserSession()
+      view -> view: showMessage()
+    end
+  
+
