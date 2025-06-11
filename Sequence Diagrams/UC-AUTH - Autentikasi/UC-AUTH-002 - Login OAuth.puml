@@ -4,18 +4,18 @@ skinparam wrapWidth 140
 title Registrasi OAuth
 
 actor ":User" as user
-participant ":RegisterUI" as view
+participant ":LoginUI" as view
 participant ":AuthController" as controller
 participant ":AuthService" as authService
 participant ":UserService" as userService
 participant "GoogleOAuthProvider:OAuthProvider" as oauth
 database ":DBMS" as db
 
-user -> view ++: Open register view
-view -> view: showRegisterView()
+user -> view ++: Open login view
+view -> view: showLoginView()
 
-user -> view: Register using Google
-view -> controller ++: registerOAuth()
+user -> view: Login using Google
+view -> controller ++: loginOAuth()
 
 controller -> authService ++: requestOAuth()
 
@@ -43,14 +43,14 @@ opt user's OAuth authenticated
       db --> authService --: transactionStatus
     authService --> authService --: token
 
-    authService -> authService ++: getNewUserData(token)
+    authService -> authService ++: getUserData(token)
       authService -> oauth ++: getCurrentUserProfile(token)
         oauth --> authService --: userProfileDTO
 
-      authService -> userService ++: createUser(userCreateDTO)
+      authService -> userService ++: getUserById(userId)
 
-      userService -> db ++: insertUser()
-        db --> userService --: transactionStatus
+      userService -> db ++: selectUser()
+        db --> userService --: userModel
         userService --> authService --: userModel
       authService --> authService --: userModel
 
