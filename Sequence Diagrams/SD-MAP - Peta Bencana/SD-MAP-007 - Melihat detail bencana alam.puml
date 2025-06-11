@@ -1,0 +1,33 @@
+@startuml SD-MAP-007 - Melihat detail (laporan) bencana alam
+
+actor ":User" as user
+participant ":MapUI" as view
+participant ":MapController" as controller
+participant ":MapService" as mapService
+participant ":DisasterDataService" as disasterDataService
+participant ":CommentService" as commentService
+participant ":DBMS" as db
+
+user -> view ++: Memilih titik (laporan) bencana alam 
+
+== Load data detail bencana ==
+view -> controller ++: getDisasterDetail(disasterId)
+  controller -> disasterDataService ++: getDisasterById(disasterId)
+      disasterDataService -> db ++: Query disaster by id
+        return disaster
+    return disaster
+  return disaster
+
+view -> view: showDisasterDetail(disaster)
+view -> view: zoomToDisasterPoint(disaster)
+
+== Load komentar ==
+view -> controller ++: getDisasterComments(disasterId)
+  controller -> commentService ++: getCommentsByDisasterId(disasterId)
+    commentService -> db ++: Query comments by disaster id
+      return comments
+    return comments
+  return comments
+
+view -> view: showComments(comments)
+ 

@@ -2,9 +2,9 @@
 
 actor ":User" as user
 participant ":MapUI" as view
-participant ":LocationAPI" as locationApi
 participant ":MapController" as controller
 participant ":MapService" as mapService
+participant ":GeocodeAPI" as geocodeApi
 participant ":DisasterDataService" as disasterDataService
 participant ":DBMS" as db
 
@@ -15,7 +15,9 @@ view -> view: showLocationSearchInput()
 
 user -> view: Mengisi alamat/daerah
 view -> controller ++: searchLocation(address)
-  controller -> mapService ++: geocodeAddress(address)
+  controller -> mapService ++: searchLocation(address)
+    mapService -> geocodeApi ++: geocodeAddress(address)
+      return locations
     return locations
   return locations
 
