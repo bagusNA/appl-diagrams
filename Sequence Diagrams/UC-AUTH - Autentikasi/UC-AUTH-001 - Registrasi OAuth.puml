@@ -1,0 +1,45 @@
+@startuml UC-AUTH-001 - Registrasi OAuth
+skinparam wrapWidth 140
+
+title Registrasi OAuth
+
+actor ":User" as user
+participant ":RegisterUI" as view
+participant ":AuthController" as controller
+participant ":AuthService" as service
+participant "GoogleOAuthProvider:OAuthProvider" as oauth
+database ":DBMS" as db
+
+user -> view ++: Open register view
+view -> view: showRegisterView()
+
+user -> view: Register using Google
+view -> controller ++: registerOAuth()
+
+controller -> service ++: requestOAuth(user)
+
+service -> oauth ++: requestAuth(appId, callbackUrl)
+oauth --> service: oauthUrl
+
+service --> controller --: oauthUrl
+
+controller --> view: oauthUrl
+
+view -> view ++: openOAuthUrl(oauthUrl)
+user -> view: Authenticate Google account
+deactivate view
+
+opt user's OAuth authenticated
+  oauth -> controller: oauthCallback(url, oauthCode)
+  controller --> oauth
+  deactivate oauth
+
+  controller -> service ++: createOAuthToken(user, oauthCode)
+  service -> oauth ++: getToken(oauthCode)
+  oauth --> service --: token
+  service -> db ++: insertToken()
+  db --> service --: transactionStatus
+  service --> controller --: token
+  controller --> view --: userDTO, token
+  view -> view: setUserSession(userDTO, token)
+end
