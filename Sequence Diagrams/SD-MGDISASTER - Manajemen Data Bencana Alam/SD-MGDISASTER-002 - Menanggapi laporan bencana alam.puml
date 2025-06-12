@@ -1,0 +1,77 @@
+@startuml SD-MGDISASTER-002 - Menanggapi laporan bencana alam
+
+title Menanggapi laporan bencana alam
+
+actor "Administrator & Perwakilan BPBD:User" as user
+participant ":DisasterReportAdminUI" as view
+participant ":DisasterReportAdminController" as controller
+participant ":ReportResponseFormValidator" as validator
+participant ":DisasterReportService" as disasterService
+participant ":StorageService" as storageService
+database ":DBMS" as db
+
+== Daftar laporan bencana alam ==
+
+user -> view ++: Memilih menu daftar laporan bencana alam
+view -> view: showDisasterReportListPage()
+
+view -> controller ++: getDisasterReports()
+  controller -> disasterService ++: getDisasterReports()
+    disasterService -> db ++: Query disaster reports
+      return disasterReports
+    return disasterReports
+  return disasterReports
+
+view -> view: loadDisasterReports(disasterReports)
+
+== Detail laporan bencana alam ==
+user -> view: Memilih menu detail laporan bencana alam
+view -> view: showDisasterReportDetailPage(reportId)
+
+view -> controller ++: getDisasterReport(reportId)
+  controller -> disasterService ++: getDisasterReportById(reportId)
+    disasterService -> db ++: Query disaster report by id
+      return disasterReport
+    return disasterReport
+  return disasterReport
+
+view -> view: loadDisasterReport(disasterReport)
+
+== Menanggapi laporan bencana alam ==
+alt laporan benar
+  user -> view: Memilih opsi laporan benar
+  user -> view: Mengisi data pelengkap (komentar, tindak lanjut, dan lampiran)
+else laporan tidak valid
+  user -> view: Memilih opsi laporan tidak valid
+  user -> view: Mengisi alasan
+end
+
+view -> controller ++: saveResponse(reportResponseCreateDTO)
+  controller -> validator ++: validate(reportResponseCreateDTO)
+    return isValid
+  
+  alt report response data is invalid
+    controller --> view: errorMessages
+    view -> view: showErrorMessages()
+  else report response data is valid
+    controller -> disasterService ++: updateReportFromResponse(reportResponseCreateDTO)
+      disasterService -> db ++: Update report data
+        return transactionStatus
+      
+      opt has attachments
+        loop for each attachments
+          disasterService -> storageService ++: saveAttachment(attachment)
+            storageService -> storageService ++: saveFile(attachment)
+              return isSaved
+
+            storageService -> db ++: Insert file metadata
+              return transactionStatus
+            return isSuccess
+        end
+      end
+      return isSuccess
+    
+    return isSuccess
+
+    view -> view: showSuccessMessage()
+  end

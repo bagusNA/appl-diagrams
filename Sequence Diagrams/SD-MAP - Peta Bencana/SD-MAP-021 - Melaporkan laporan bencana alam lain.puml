@@ -7,7 +7,7 @@ participant ":DisasterReportUI" as view
 participant ":DisasterReportController" as controller
 participant ":ReportFormValidator" as validator
 participant ":DisasterReportService" as service
-database ":dbms" as db
+database ":DBMS" as db
 
 user -> view ++: Memilih menu laporkan laporan
 view -> view : showReportCommentPage()

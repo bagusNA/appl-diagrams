@@ -8,7 +8,7 @@ participant ":MapController" as controller
 participant ":CommentFormValidator" as validator
 participant ":CommentService" as commentService
 participant ":StorageService" as storageService
-database ":dbms" as db
+database ":DBMS" as db
 
 user -> view ++: Memilih menu buat komentar
 view -> view : showAddCommentPage()

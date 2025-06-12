@@ -7,7 +7,7 @@ participant ":MapUI" as view
 participant ":MapController" as controller
 participant ":CommentReportFormValidator" as validator
 participant ":CommentService" as commentService
-database ":dbms" as db
+database ":DBMS" as db
 
 user -> view ++: Memilih menu laporkan komentar
 view -> view : showReportCommentPage()

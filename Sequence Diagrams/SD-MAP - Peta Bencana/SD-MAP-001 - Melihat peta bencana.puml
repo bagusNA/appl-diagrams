@@ -8,7 +8,7 @@ participant ":LocationAPI" as locationApi
 participant ":MapController" as controller
 participant ":MapService" as mapService
 participant ":DisasterDataService" as disasterDataService
-database ":dbms" as db
+database ":DBMS" as db
 
 user -> view ++: Membuka peta bencana alam
 view -> view: showMap()
