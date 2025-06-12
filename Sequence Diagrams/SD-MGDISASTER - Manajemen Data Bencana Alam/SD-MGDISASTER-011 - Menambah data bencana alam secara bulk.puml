@@ -1,0 +1,60 @@
+@startuml SD-MGDISASTER-011 - Menambah data bencana alam secara bulk
+
+title Menambah data bencana alam secara bulk
+
+actor "Administrator & Perwakilan BPBD:User" as user
+participant ":DisasterAdminUI" as view
+participant ":DisasterAdminController" as controller
+participant ":BulkDisasterFormValidator" as validator
+participant ":DisasterReportService" as disasterService
+participant ":StorageService" as storageService
+database ":DBMS" as db
+
+user -> view ++: Memilih menu tambah bencana alam
+view -> view: showCreateDisasterDataPage()
+
+user -> view: Memilih tombol unduh template data bulk
+view -> controller ++: downloadBulkTemplate()
+  controller -> disasterService ++: getBulkTemplateFileUrl()
+    disasterService -> storageService ++: getFileDownload(bulkTemplatePath)
+      return bulkTemplateFile
+    return bulkTemplateFile
+  return bulkTemplateFile
+
+user -> view: Mengunggah data bulk
+view -> controller ++: importBulkDisaster(bulkFile)
+  controller -> validator ++: validate(bulkFile)
+    return isValid, errorMessages
+
+  alt bulk file invalid
+    controller --> view: errorMessages
+    view -> view: showErrorMessages()
+  else bulk file valid
+    controller -> disasterService ++: createDisastersFromBulkFile(bulkFile)
+      disasterService -> disasterService ++: parseBulkFile(bulkFile)
+        return disasterCreateDTOs
+      
+      loop for each disasterCreateDTO
+        disasterService -> disasterService ++: createDisaster(disasterCreateDTO)
+          disasterService -> db ++: Insert disaster 
+            return transactionStatus
+          
+          opt has attachments
+            loop for each attachments
+              disasterService -> storageService ++: saveAttachment(attachment)
+                storageService -> storageService ++: saveFile(attachment)
+                  return isSaved
+
+                storageService -> db ++: Insert file metadata
+                  return transactionStatus
+                return isSuccess
+            end
+          end
+          return disasterReport
+      end
+
+    return isSuccess, successMessage
+    return isSuccess, successMessage
+
+    view -> view: showSuccessMessage()
+  end

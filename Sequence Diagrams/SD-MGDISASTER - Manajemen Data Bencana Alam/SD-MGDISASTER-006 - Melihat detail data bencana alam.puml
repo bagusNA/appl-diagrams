@@ -1,0 +1,35 @@
+@startuml SD-MGDISASTER-006 - Melihat detail data bencana alam
+
+title Melihat detail data bencana alam
+
+actor "Administrator & Perwakilan BPBD:User" as user
+participant ":DisasterAdminUI" as view
+participant ":DisasterAdminController" as controller
+participant ":DisasterReportService" as disasterService
+database ":DBMS" as db
+
+== Daftar data bencana alam ==
+user -> view ++: Memilih menu daftar bencana alam
+view -> view: showDisasterListPage()
+
+view -> controller ++: getDisasters()
+  controller -> disasterService ++: getDisasters()
+    disasterService -> db ++: Query disasters
+      return disasters
+    return disasters
+  return disasters
+
+view -> view: loadDisasters(disasters)
+
+== Detail bencana alam ==
+user -> view: Memilih menu detail bencana alam
+view -> view: showDisasterDetailPage(disasterId)
+
+view -> controller ++: getDisasterReport(disasterId)
+  controller -> disasterService ++: getDisasterReportById(disasterId)
+    disasterService -> db ++: Query disaster by id
+      return disaster
+    return disaster
+  return disaster
+
+view -> view: loadDisaster(disaster)

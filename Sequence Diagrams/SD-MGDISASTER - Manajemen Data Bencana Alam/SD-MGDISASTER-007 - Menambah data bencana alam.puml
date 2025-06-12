@@ -1,0 +1,44 @@
+@startuml SD-MGDISASTER-007 - Menambah data bencana alam
+
+title Menambah data bencana alam
+
+actor "Administrator & Perwakilan BPBD:User" as user
+participant ":DisasterAdminUI" as view
+participant ":DisasterAdminController" as controller
+participant ":DisasterFormValidator" as validator
+participant ":DisasterReportService" as disasterService
+participant ":StorageService" as storageService
+database ":DBMS" as db
+
+user -> view ++: Memilih menu tambah bencana alam
+view -> view: showCreateDisasterDataPage()
+
+user -> view : Mengisi data bencana alam dan lampiran
+view -> controller ++: createDisaster(disasterCreateDTO, attachments)
+  controller -> validator ++: validate(disasterCreateDTO, attachments)
+    return isValid, errorMessages
+
+  alt disaster data invalid
+    controller --> view: errorMessages
+    view -> view: showErrorMessages()
+  else disaster data valid
+    controller -> disasterService ++: createDisaster(disasterCreateDTO, attachments)
+      disasterService -> db ++: Insert disaster 
+        return transactionStatus
+      
+      opt has attachments
+        loop for each attachments
+          disasterService -> storageService ++: saveAttachment(attachment)
+            storageService -> storageService ++: saveFile(attachment)
+              return isSaved
+
+            storageService -> db ++: Insert file metadata
+              return transactionStatus
+            return isSuccess
+        end
+      end
+      return disasterReport
+    return disasterReportDTO, successMessage
+
+    view -> view: showSuccessMessage()
+  end
