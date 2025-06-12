@@ -1,0 +1,64 @@
+@startuml SD-MGACCOUNT-001 - Mengubah data akun
+
+title Mengubah data akun
+
+actor ":User" as user
+participant ":ProfileUI" as view
+participant ":ProfileController" as controller
+participant ":ProfileUpdateFormValidator" as validator 
+participant ":UserService" as service
+participant ":StorageService" as storageService 
+participant ":DBMS" as db
+
+user -> view ++: Membuka menu profile
+view -> view: showProfileMenu()
+
+view -> controller ++: getProfile()
+  controller -> service ++: getUserById(userId)
+    service -> db ++: Query user by id
+      return userModel
+    return userModel
+  return userDTO
+
+view -> view: loadUserProfile(userDTO)
+
+== Ubah data akun ==
+user -> view: Memilih mode edit
+view -> view: showProfileEditMode()
+
+user -> view: Mengubah profil akun & foto profile 
+view -> controller ++: updateProfile(profileUpdateDTO, profilePicture)
+  controller -> validator ++: validate(profileUpdateDTO, profilePicture)
+    return isValid, errorMessages
+
+  alt profile data invalid
+    controller --> view: isValid, errorMessages
+    view -> view: showErrorMessages()
+  else profile data valid
+    controller -> service ++: updateProfile(profileUpdateDTO, profilePicture)
+      service -> db ++: Update profile 
+        return transactionStatus
+      
+      opt has uploaded profile picture 
+        alt has saved profile picture
+          service -> storageService ++: overwriteFile(file)
+            return isSaved
+          
+          service -> db ++: Update file metadata
+            return transactionStatus
+        else has no saved profile picture
+          service -> storageService ++: saveFile(file)
+            return isSaved
+          
+          service -> db ++: Insert file metadata
+            return transactionStatus
+        end
+      end
+
+      return profile
+
+    return profileDTO
+    
+    view -> view: showSuccessMessage()
+    view -> view: updateProfileData(profileDTO)
+  end

@@ -1,0 +1,21 @@
+@startuml SD-MAP-020 - Melihat laporan bencana alam yang telah diajukan
+
+title Melihat laporan bencana alam yang telah diajukan
+
+actor ":User" as user
+participant ":DisasterReportUI" as view
+participant ":DisasterReportController" as controller
+participant ":DisasterReportService" as service
+participant ":DBMS" as db
+
+user -> view ++: Membuka menu daftar pengajuan laporan 
+view -> view: showDisasterReportListPage()
+
+view -> controller ++: getDisasterReports()
+  controller -> service ++: getDisasterReportByUserId(userId)
+    service -> db ++: Query disaster report by user id
+      return disasterReports
+    return disasterReports
+  return disasterReports
+
+view -> view: showDisasterReports(disasterReports)

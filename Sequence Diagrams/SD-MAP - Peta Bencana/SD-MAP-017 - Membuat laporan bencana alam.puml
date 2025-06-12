@@ -1,0 +1,44 @@
+@startuml SD-MAP-017 - Membuat laporan bencana alam
+
+title Membuat laporan bencana alam
+
+actor ":User" as user
+participant ":DisasterReportUI" as view
+participant ":DisasterReportController" as controller
+participant ":DisasterReportFormValidator" as validator
+participant ":DisasterReportService" as disasterService
+participant ":StorageService" as storageService
+participant ":DBMS" as db
+
+user -> view ++: Memilih menu buat laporan bencana alam
+view -> view : showCreateDisasterReportPage()
+
+user -> view : Mengisi data laporan dan lampiran
+view -> controller ++: createDisasterReport(disasterReportCreateDTO, attachments)
+  controller -> validator ++: validate(disasterReportCreateDTO, attachments)
+    return isValid, errorMessages
+
+  alt disaster report invalid
+    controller --> view: errorMessages
+    view -> view: showErrorMessages()
+  else disaster report valid
+    controller -> disasterService ++: createDisasterReport(disasterReportCreateDTO, attachments)
+      disasterService -> db ++: Insert disaster report
+        return transactionStatus
+      
+      opt has attachments
+        loop for each attachments
+          disasterService -> storageService ++: saveAttachment(attachment)
+            storageService -> storageService ++: saveFile(attachment)
+              return isSaved
+
+            storageService -> db ++: Insert file metadata
+              return transactionStatus
+            return isSuccess
+        end
+      end
+      return disasterReport
+    return disasterReportDTO, successMessage
+
+    view -> view: showSuccessMessage()
+  end

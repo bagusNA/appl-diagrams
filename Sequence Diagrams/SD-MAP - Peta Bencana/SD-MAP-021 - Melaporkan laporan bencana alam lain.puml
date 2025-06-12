@@ -1,0 +1,31 @@
+@startuml SD-MAP-021 - Melaporkan laporan bencana alam yang diunggah pengguna lain
+
+title Melaporkan laporan bencana alam yang diunggah pengguna lain
+
+actor ":User" as user
+participant ":DisasterReportUI" as view
+participant ":DisasterReportController" as controller
+participant ":ReportFormValidator" as validator
+participant ":DisasterReportService" as service
+participant ":DBMS" as db
+
+user -> view ++: Memilih menu laporkan laporan
+view -> view : showReportCommentPage()
+
+user -> view : Mengisi alasan pelaporan 
+view -> controller ++: createReport(commentId, reason)
+  controller -> validator ++: validate(commentId, reason)
+    return isValid, errorMessages
+
+  alt report invalid
+    controller --> view: errorMessages
+    view -> view: showErrorMessages()
+  else report valid
+    controller -> service ++: createReport(commentId, reason)
+      service -> db ++: Insert report
+        return transactionStatus
+      return report 
+    return report, successMessage
+
+    view -> view: showSuccessMessage()
+  end

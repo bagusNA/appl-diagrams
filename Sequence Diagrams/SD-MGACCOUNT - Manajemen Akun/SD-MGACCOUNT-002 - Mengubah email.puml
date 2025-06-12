@@ -1,0 +1,93 @@
+@startuml SD-MGACCOUNT-001 - Mengubah data akun
+
+title Mengubah data akun
+
+actor ":User" as user
+participant ":ProfileUI" as view
+participant ":ProfileController" as controller
+participant ":UpdateFormValidator" as validator 
+participant ":AuthService" as authService
+participant ":UserService" as userService
+participant ":OTPService" as otpService
+participant ":EmailService" as emailService
+participant ":DBMS" as db
+
+user -> view ++: Membuka menu profile
+view -> view: showProfileMenu()
+
+view -> controller ++: getProfile()
+  controller -> userService ++: getUserById(userId)
+    userService -> db ++: Query user by id
+      return userModel
+    return userModel
+  return userDTO
+
+view -> view: loadUserProfile(userDTO)
+
+== Ubah email ==
+user -> view: Memilih tombol ubah email
+view -> view: showChangeEmailPage()
+
+user -> view: Mengisi email baru & password
+view -> controller ++: requestEmailUpdate(updateEmailDTO)
+  controller -> validator ++: validate(updateEmailDTO)
+    return isValid, errorMessages
+
+  alt email data invalid
+    controller --> view: isValid, errorMessages
+    view -> view: showErrorMessages()
+  else email data valid
+    controller -> authService ++: requestEmailUpdate(updateEmailDTO)
+      authService -> userService ++: checkUserExistsByEmail(email)
+        userService -> db ++: selectExistUser()
+          return isEmailAvailable
+        return isEmailAvailable
+      
+      alt email is not available
+        authService --> controller: invalidEmailErrorMessage
+        controller --> view: errorMessages
+        view -> view: showErrorMessages()
+      else email available
+        authService -> otpService ++: sendOTP(email)
+          otpService -> otpService ++: generateOTP()
+            return otp
+          
+          otpService -> db ++: createOTPForEmail(email, otp)
+            return transactionStatus
+
+          otpService-> emailService ++: sendOTP(email, otp)
+            return isEmailSent
+          return isEmailSent
+        return otpSentMessage
+
+        return otpSentMessage
+        view -> view: showOTPMenu()
+        view -> view: showOTPSentMessage()
+
+        user -> view: Input OTP
+
+        view -> controller ++: changeEmail(emailUpdateDTO, otp)
+          controller -> authService ++: changeEmail(emailUpdateDTO, otp)
+            authService -> otpService ++: validateOTP(email, otp)
+              otpService -> db ++: findOTP(email, otp)
+                return isOtpFound
+              return isOtpCorrect
+            
+            alt otp incorrect
+              authService --> controller: invalidOTPErrorMessage
+              controller --> view: errorMessages
+              view -> view: showErrorMessages()
+            else otp correct
+              authService -> userService ++: updateUserEmail(oldEmail, email)
+                userService -> db ++: Update user email
+                  return transactionStatus
+                return isSuccess
+
+                return isSuccess
+              return isSuccess
+
+              view -> view: showOTPStatusMessage(isOtpCorrect)
+              view -> view: showSuccessMessage()
+            end
+      end
+  end
