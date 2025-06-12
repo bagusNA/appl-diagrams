@@ -1,5 +1,4 @@
-@startuml UC-AUTH-001 - Registrasi dengan Email
-skinparam wrapWidth 140
+@startuml SD-AUTH-001 - Registrasi dengan Email
 
 title Registrasi dengan Email
 

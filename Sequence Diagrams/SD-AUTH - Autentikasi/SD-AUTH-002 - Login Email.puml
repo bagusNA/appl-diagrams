@@ -1,5 +1,4 @@
-@startuml UC-AUTH-002 - Login dengan Email
-skinparam wrapWidth 140
+@startuml SD-AUTH-002 - Login dengan Email
 
 title Login dengan Email
 

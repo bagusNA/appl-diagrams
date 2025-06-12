@@ -1,4 +1,4 @@
-@startuml UC-AUTH-003 - Logout
+@startuml SD-AUTH-003 - Logout
 
 title Logout
 

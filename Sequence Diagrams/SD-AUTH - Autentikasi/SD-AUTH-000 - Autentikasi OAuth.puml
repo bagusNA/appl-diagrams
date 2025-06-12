@@ -1,5 +1,4 @@
-@startuml UC-AUTH-001-01 - Register/Login OAuth
-skinparam wrapWidth 140
+@startuml SD-AUTH-000 - Register/Login OAuth
 
 title Register/Login OAuth
 
