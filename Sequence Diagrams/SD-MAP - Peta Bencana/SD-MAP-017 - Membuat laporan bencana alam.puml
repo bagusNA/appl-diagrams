@@ -8,7 +8,7 @@ participant ":DisasterReportController" as controller
 participant ":DisasterReportFormValidator" as validator
 participant ":DisasterReportService" as disasterService
 participant ":StorageService" as storageService
-participant ":DBMS" as db
+database ":dbms" as db
 
 user -> view ++: Memilih menu buat laporan bencana alam
 view -> view : showCreateDisasterReportPage()

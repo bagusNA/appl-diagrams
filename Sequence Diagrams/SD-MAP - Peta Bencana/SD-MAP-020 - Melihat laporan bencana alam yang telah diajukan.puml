@@ -6,7 +6,7 @@ actor ":User" as user
 participant ":DisasterReportUI" as view
 participant ":DisasterReportController" as controller
 participant ":DisasterReportService" as service
-participant ":DBMS" as db
+database ":dbms" as db
 
 user -> view ++: Membuka menu daftar pengajuan laporan 
 view -> view: showDisasterReportListPage()

@@ -8,7 +8,7 @@ participant ":ProfileController" as controller
 participant ":ProfileUpdateFormValidator" as validator 
 participant ":UserService" as service
 participant ":StorageService" as storageService 
-participant ":DBMS" as db
+database ":dbms" as db
 
 user -> view ++: Membuka menu profile
 view -> view: showProfileMenu()

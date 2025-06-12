@@ -6,7 +6,7 @@ participant ":MapController" as controller
 participant ":MapService" as mapService
 participant ":GeocodeAPI" as geocodeApi
 participant ":DisasterDataService" as disasterDataService
-participant ":DBMS" as db
+database ":dbms" as db
 
 user -> view ++: Memilih input pencarian lokasi
 view -> view: showLocationSearchInput()

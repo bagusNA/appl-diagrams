@@ -10,7 +10,7 @@ participant ":AuthService" as authService
 participant ":UserService" as userService
 participant ":OTPService" as otpService
 participant ":EmailService" as emailService
-participant ":DBMS" as db
+database ":dbms" as db
 
 user -> view ++: Membuka menu profile
 view -> view: showProfileMenu()
